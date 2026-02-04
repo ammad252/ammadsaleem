@@ -145,6 +145,38 @@ nav ul li a:hover {
     font-size: 17px;
     line-height: 1.7;
 }
+/* =====================
+   DOWNLOAD CV BUTTON
+===================== */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 50px; /* Oval button */
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.download-btn i {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #16a34a, #22c55e); /* Gradient shift */
+}
+
+.download-btn:hover i {
+    transform: translateX(5px); /* Icon moves right on hover */
+}
 
 /* =====================
    SKILLS SECTION
