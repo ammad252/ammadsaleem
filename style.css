@@ -94,6 +94,34 @@ nav ul li a:hover {
 .hero-buttons {
     margin-top: 25px;
 }
+/* LinkedIn Button */
+.linkedin-btn {
+    background: linear-gradient(135deg, #1c7ad8, #0077B5); /* LinkedIn blue gradient */
+    color: #fff;
+}
+
+.linkedin-btn:hover {
+    background: linear-gradient(135deg, #0077B5, #0A66C2); /* Reverse gradient on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* GitHub Button */
+.github-btn {
+    background: linear-gradient(135deg, #333333, #6e5494); /* GitHub dark + purple gradient */
+    color: #fff;
+}
+
+.github-btn:hover {
+    background: linear-gradient(135deg, #6e5494, #333333); /* Reverse gradient on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Icon spacing */
+.hero-buttons i {
+    margin-right: 8px;
+}
 
 .btn {
     display: inline-block;
@@ -153,7 +181,7 @@ nav ul li a:hover {
     align-items: center;
     gap: 10px; /* Space between icon and text */
     padding: 12px 25px;
-    background: linear-gradient(135deg, #22c55e, #16a34a);
+    background: linear-gradient(135deg, #0dcaca, #20cec5);
     color: #ffffff;
     font-weight: 600;
     font-size: 16px;
@@ -171,7 +199,7 @@ nav ul li a:hover {
 .download-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    background: linear-gradient(135deg, #16a34a, #22c55e); /* Gradient shift */
+    background: linear-gradient(135deg, #1d1fb9, #3b22c5); /* Gradient shift */
 }
 
 .download-btn:hover i {
@@ -333,3 +361,4 @@ footer {
     background: #020617;
     color: #ffffff;
 }
+
