@@ -1,10 +1,12 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ammad Saleem | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
 
@@ -20,61 +22,168 @@
     </ul>
 </nav>
 
-<!-- HOME -->
-<section id="home" class="section hero">
-    <h1>Ammad Saleem</h1>
-    <h2>Android & Flutter Developer</h2>
-    <p>BS Computer Science | Mobile App Development | AI Projects</p>
-    <a href="#projects" class="btn">View Projects</a>
-    <a href="https://linkedin.com" target="_blank" class="btn dark">LinkedIn</a>
-    <a href="https://github.com" target="_blank" class="btn dark">GitHub</a>
+<!-- HERO / ABOUT ME BANNER -->
+<section id="home" class="section hero-banner">
+    <div class="hero-banner-container">
+        <div class="hero-img">
+            <img src="img/aboutme.jpg" alt="Ammad Saleem">
+        </div>
+        <div class="hero-text">
+            <h1>Hello, I'm Ammad Saleem</h1>
+            <h2>Full Stack Developer/Data Analysis/Machine Learning</h2>
+            <p>BS Computer Science | Mobile App Development | AI Projects</p>
+            <div class="hero-buttons">
+                <a href="https://www.linkedin.com/in/ammad-saleem-7264ab263" target="_blank" class="btn dark">LinkedIn</a>
+                <a href="https://github.com/ammad252" target="_blank" class="btn dark">GitHub</a>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="section gray">
-    <h2>About Me</h2>
-    <p>I am Ammad Saleem, a BS Computer Science graduate with experience in Android & Flutter development. I enjoy building apps, solving real-world problems, and creating user-friendly solutions.</p>
+<section id="about" class="section about-section">
+    <div class="about-container">
+        <div class="about-img">
+            <img src="img/photo.png" alt="About Me">
+        </div>
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>I’m Ammad Saleem, a Computer Science graduate (BCS) from COMSATS University Islamabad.
+I work as a Full-Stack Developer and have practical experience in making user-friendly Android apps. Besides development, I am also focusing on Data Analysis and Machine Learning, using Python to study data, build models, and keep improving my skills.
+Problem-solving is at the heart of my work. I enjoy turning ideas into scalable and efficient solutions and taking on challenges that make user experience and system performance better.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="section skills-section">
+    <h1 class="section-title">Skills</h1>
+    <p class="section-subtitle">A brief overview</p>
+
+    <div class="accordion">
+
+        <!-- Programming Languages -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+    <span class="title">Programming Languages</span>
+    <span class="chevron"></span>
+</button>
+            <div class="accordion-content">
+                <ul>
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>Dart</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Frameworks -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+    
+     <span class="title">Frameworks & Libraries</span>
+    <span class="chevron"></span>
+</button>
+             
+              
+            <div class="accordion-content">
+                <ul>
+                    <li>Android SDK (Android Studio – Java)</li>
+                    <li>Flutter (Mobile UI Development)</li>
+                    <li>HTML5, CSS3, JavaScript</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Mobile Development -->
+        <div class="accordion-item">
+                <button class="accordion-header">
+    
+     <span class="title">Mobile Development</span>
+    <span class="chevron"></span>
+</button>
+           
+            <div class="accordion-content">
+                <ul>
+                    <li>Android App Development (Java)</li>
+                    <li>Cross-Platform Apps (Flutter)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Data & AI -->
+        <div class="accordion-item">
+           <button class="accordion-header">
+    
+     <span class="title">Data Analysis & AI</span>
+    <span class="chevron"></span>
+</button>
+           
+            <div class="accordion-content">
+                <ul>
+                    <li>Python Data Processing</li>
+                    <li>NumPy & Pandas (Basic–Intermediate)</li>
+                    <li>Machine Learning (Basics)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="accordion-item">
+           <button class="accordion-header">
+    
+     <span class="title">Tools & Design</span>
+    <span class="chevron"></span>
+</button>
+           
+            <div class="accordion-content">
+                <ul>
+                    <li>Git & GitHub</li>
+                    <li>Figma (UI/UX)</li>
+                    <li>Canva</li>
+                    <li>Microsoft Office</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="section">
-    <h2>Skills</h2>
-    <ul class="list">
-        <li>Android Development (Java)</li>
-        <li>Flutter & Dart</li>
-        <li>Firebase & SQLite</li>
-        <li>HTML, CSS, JavaScript</li>
-        <li>Git & GitHub</li>
-    </ul>
-</section>
 
 <!-- EXPERIENCE -->
-<section id="experience" class="section gray">
+<section id="experience" class="section experience-section">
     <h2>Experience</h2>
-    <div class="card">
-      <img src="img/googlelogo.png" alt="Project 1" class="card-img" onclick="window.location.href='experience.html'">
-
-        <h3>Android App Developer</h3>
-        <p>Worked on Android UI and custom app features (click image for details)</p>
+    <div class="experience-container">
+        <div class="card">
+            <img src="images/exp1.jpg" alt="Experience 1" class="card-img" onclick="window.location.href='experience.html'">
+            <h3>Android App Developer</h3>
+            <p>Worked on Android UI and custom app features (click image for details)</p>
+        </div>
     </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="section">
+<section id="projects" class="section projects-section">
     <h2>Projects</h2>
-    <div class="card">
-        <img src="images/proj1.jpg" alt="Project 1" class="card-img" onclick="window.location.href='project1.html'">
-        <h3>Smart AI Diet Consultant</h3>
-        <p>AI-based diet app (click image for full project details)</p>
+    <div class="projects-container">
+        <div class="card">
+            <img src="images/proj1.jpg" alt="Project 1" class="card-img" onclick="window.location.href='project1.html'">
+            <h3>Smart AI Diet Consultant</h3>
+            <p>AI-based diet app (click image for full project details)</p>
+        </div>
     </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="section gray">
+<section id="contact" class="section contact-section">
     <h2>Contact Me</h2>
-    <p>Email: ammad@example.com</p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/ammad" target="_blank">linkedin.com/in/ammad</a></p>
-    <p>GitHub: <a href="https://github.com/ammad" target="_blank">github.com/ammad</a></p>
+    <div class="contact-container">
+        <p>Email: ammad@example.com</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/ammad-saleem-7264ab263" target="_blank">linkedin.com/in/ammad-saleem-7264ab263</a></p>
+        <p>GitHub: <a href="https://github.com/ammad252" target="_blank">github.com/ammad252</a></p>
+    </div>
 </section>
 
 <!-- FOOTER -->
@@ -82,8 +191,6 @@
     © 2026 Ammad Saleem
 </footer>
 
-<!-- SCRIPT -->
 <script src="script.js"></script>
 </body>
 </html>
-
