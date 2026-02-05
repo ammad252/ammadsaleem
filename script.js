@@ -45,6 +45,24 @@ accordionHeaders.forEach(header => {
         currentItem.classList.toggle("active");
     });
 });
+// Mobile Hamburger Toggle
+const hamburger = document.querySelector(".hamburger");
+const nav = document.querySelector("nav");
+
+hamburger.addEventListener("click", () => {
+    nav.classList.toggle("nav-open");
+});
+
+// Accordion functionality
+const accordions = document.querySelectorAll(".accordion-item");
+
+accordions.forEach(item => {
+    const header = item.querySelector(".accordion-header");
+    header.addEventListener("click", () => {
+        item.classList.toggle("active");
+    });
+});
+
 
 
 /* =========================

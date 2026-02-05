@@ -1,41 +1,173 @@
-<!DOCTYPE html>
-<html>
+ <!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experience - Android App Developer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* =====================
+           EXPERIENCE PAGE STYLING
+        ====================== */
+        .experience-page {
+            padding: 100px 20px;
+            background: linear-gradient(to right, #d1fae5, #a7f3d0);
+            min-height: 100vh;
+        }
+
+        .experience-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .experience-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        /* IMAGE STYLING */
+        .experience-img {
+            display: flex;
+            flex-direction: row; /* images side by side */
+            gap: 20px;
+            flex-shrink: 0;
+        }
+
+        .experience-img img {
+            width: 100%;
+            max-width: 200px; /* desktop image size */
+            border-radius: 16px;
+            border: 3px solid #22c55e;
+            object-fit: cover;
+        }
+
+        /* TEXT STYLING */
+        .experience-text {
+            flex: 1;
+        }
+
+        .experience-text p {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .experience-list li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* BACK BUTTON */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+        }
+
+        /* SECTION TITLE */
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #1f2937;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            .experience-content {
+                flex-direction: column; /* stacked on smaller tablets */
+                align-items: center;
+                text-align: center;
+                gap: 25px;
+            }
+
+            .experience-img img {
+                max-width: 180px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .experience-img img {
+                max-width: 140px; /* mobile image size */
+            }
+        }
+    </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#skills">Skills</a></li>
-        <li><a href="index.html#experience" class="active">Experience</a></li>
-        <li><a href="index.html#projects">Projects</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-    </ul>
+    <div class="nav-container">
+    
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#experience" class="active">Experience</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </div>
 </nav>
 
-<div class="container">
-    <h1>Android App Developer</h1>
-    <img src="images/exp1.jpg" alt="Experience 1" style="width:100%; max-width:600px; margin-bottom:20px;">
-    <p>
-        Worked remotely on multiple Android applications:
-    </p>
-    <ul>
-        <li>XML-based UI design and customization</li>
-        <li>Implemented dynamic layouts and reusable components</li>
-        <li>Fixed design bugs and optimized user interface</li>
-        <li>Worked with Firebase and SQLite database integration</li>
-        <li>Collaborated with clients to deliver features on time</li>
-    </ul>
-    <a href="index.html" class="btn">Back to Home</a>
-</div>
+<!-- EXPERIENCE CONTENT -->
+<section class="experience-page">
+    <div class="container experience-container">
+        <h1 class="section-title">Android App Developer</h1>
 
+        <div class="experience-content">
+            <div class="experience-img">
+                <img src="img/food1 (3).png" alt="Experience 1">
+                <img src="img/food2.png" alt="Experience 2">
+            </div>
+            <div class="experience-text">
+                <p>Worked remotely on multiple Android applications:</p>
+                <ul class="experience-list">
+                    <li> During my remote freelance contract, I
+worked on Android XML UI design, where
+my responsibilities included modifying and
+enhancing existing layouts. I implemented
+UI changes such as replacing buttons with
+radio buttons, updating button styles, and
+adjusting colors to match client
+requirements.</li>
+                </ul>
+                <a href="index.html" class="btn back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
     © 2026 Ammad Saleem
 </footer>
 
+<script>
+    // Mobile hamburger toggle
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('nav-open');
+    });
+</script>
 </body>
 </html>

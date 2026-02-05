@@ -1,42 +1,290 @@
  <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Project - Smart AI Diet Consultant</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects - Smart AI Diet Consultant</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+.projects-page {
+    padding: 100px 20px;
+    background: linear-gradient(to right, #ede9fe, #ddd6fe);
+    min-height: 100vh;
+}
+.projects-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* PROJECT SUMMARY BOX */
+.project-summary {
+    background: #7c3aed; /* stylish purple */
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* EACH SECTION */
+.projects-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.projects-section .project-text {
+    flex: 1;
+}
+
+.projects-section .project-text h3 {
+    font-size: 20px;
+    color: #4c1d95;
+    margin-bottom: 10px;
+}
+
+.projects-section .project-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.projects-section .project-text ul li {
+    margin-bottom: 8px;
+}
+
+/* IMAGES CONTAINER */
+.project-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+    flex-shrink: 0;
+}
+
+.project-images img {
+    width: calc(50% - 7.5px); /* 2 images per row */
+    max-width: 200px;
+    border-radius: 16px;
+    border: 3px solid #7c3aed;
+    object-fit: cover;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 30px;
+    transition: all 0.3s;
+}
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #a855f7, #7c3aed);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    color: #4c1d95;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .projects-section {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 25px;
+    }
+    .project-images img {
+        width: calc(50% - 7.5px);
+        max-width: 160px;
+    }
+}
+
+@media (max-width: 600px) {
+    .project-images img {
+        width: 100%;
+        max-width: 140px;
+    }
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #020617, #1e293b);
+    z-index: 1000;
+}
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+}
+nav ul li a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+nav ul li a.active,
+nav ul li a:hover {
+    color: #22c55e;
+}
+.hamburger {
+    display: none;
+    font-size: 28px;
+    color: #e5e7eb;
+    cursor: pointer;
+}
+@media(max-width:768px){
+    nav ul{
+        position:absolute;
+        top:60px;
+        left:0;
+        width:100%;
+        background:linear-gradient(135deg, #020617, #1e293b);
+        flex-direction:column;
+        display:none;
+        gap:0;
+    }
+    nav.nav-open ul{
+        display:flex;
+    }
+    nav ul li{
+        margin:12px 0;
+        text-align:center;
+    }
+    .hamburger{
+        display:block;
+    }
+}
+</style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#skills">Skills</a></li>
-        <li><a href="index.html#experience">Experience</a></li>
-        <li><a href="index.html#projects" class="active">Projects</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-    </ul>
+    <div class="nav-container">
+        
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#projects" class="active">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </div>
 </nav>
 
-<div class="container">
-    <h1>Smart AI Diet Consultant</h1>
-    <img src="images/proj1.jpg" alt="Project 1" style="width:100%; max-width:600px; margin-bottom:20px;">
-    <p>
-        This Android application generates personalized diet plans using AI algorithms.
-        Features include:
-    </p>
-    <ul>
-        <li>User registration and profile management</li>
-        <li>AI-generated meal plans based on user input</li>
-        <li>Clean and user-friendly UI</li>
-        <li>Offline and online functionality</li>
-        <li>SQLite and Firebase integration for storing user data</li>
-    </ul>
-    <a href="index.html" class="btn">Back to Home</a>
-</div>
+<!-- PROJECTS CONTENT -->
+<section class="projects-page">
+    <div class="projects-container">
+        <h1 class="section-title">Smart AI Diet Consultant</h1>
 
+        <!-- PROJECT SUMMARY -->
+        <div class="project-summary">
+            Smart AI Diet Consultant is an Android app that provides personalized diet recommendations using AI. Users can track diet, nutrition, and health.
+        </div>
+
+        <!-- LOGIN/SIGNUP -->
+        <div class="projects-section">
+            <div class="project-text">
+                <h3>Login & Signup</h3>
+                <p>User can create an account using email and password. Validation ensures:</p>
+                <ul>
+                    <li>Email format correct and not already registered</li>
+                    <li>Password minimum 8 characters with letters & numbers</li>
+                </ul>
+            </div>
+            <div class="project-images">
+                <img src="img/signup.jpg" alt="Signup">
+                <img src="img/login.jpg" alt="Login">
+            </div>
+        </div>
+
+        <!-- USER DASHBOARD -->
+        <div class="projects-section">
+            <div class="project-text">
+                <h3>User Dashboard</h3>
+                <p>Once logged in, user sees:</p>
+                <ul>
+                    <li>Personal diet plan and AI recommendations</li>
+                    <li>Diet history and nutrition tracking</li>
+                    <li>Healthy posts, daily meals, and profile management</li>
+                    <li>Feedback submission and interactive diet forms</li>
+                </ul>
+            </div>
+            <div class="project-images">
+                <img src="img/userdashboard.jpg" alt="User Dashboard">
+                <img src="img/navbar.jpg" alt="Navigation Bar">
+                <img src="img/diet history.jpg" alt="Diet History">
+                <img src="img/dietform.jpg" alt="Diet Form">
+                <img src="img/dietpred.jpg" >
+                 <img src="img/viewpost.jpg" alt="Admin Dashboard">
+            </div>
+        </div>
+
+        <!-- ADMIN DASHBOARD -->
+        <div class="projects-section">
+            <div class="project-text">
+                <h3>Admin Dashboard</h3>
+                <p>Admin can manage users and app content:</p>
+                <ul>
+                    <li>user diet history</li>
+                    <li>Add or delete nutrition info</li>
+                    <li>Create healthy posts and announcements</li>
+                    <li>View feedback from users</li>
+                   
+                </ul>
+            </div>
+            <div class="project-images">
+                <img src="img/signup.jpg" alt="Admin Dashboard">
+                <img src="img/admindahsbaord.jpg" alt="Admin Dashboard">
+                <img src="img/viewfeedback.jpg" alt="Admin Dashboard">
+               
+                <img src="img/add nutrition.jpg">
+            </div>
+        </div>
+
+        <a href="index.html" class="btn back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
     © 2026 Ammad Saleem
 </footer>
+
+<script>
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('nav');
+hamburger.addEventListener('click', () => {
+    nav.classList.toggle('nav-open');
+});
+</script>
 
 </body>
 </html>

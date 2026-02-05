@@ -1,25 +1,32 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ammad Saleem | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav>
-    <ul>
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-container">
+        <div class="logo">Ammad Saleem</div>
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
 </nav>
 
 <!-- HERO / ABOUT ME BANNER -->
@@ -30,17 +37,16 @@
         </div>
         <div class="hero-text">
             <h1>Hello, I'm Ammad Saleem</h1>
-            <h2>Full Stack Developer/Data Analysis/Machine Learning</h2>
+            <h2>Full Stack Developer / Data Analysis / Machine Learning</h2>
             <p>BS Computer Science | Mobile App Development | AI Projects</p>
-           <div class="hero-buttons">
-    <a href="https://www.linkedin.com/in/ammad-saleem-7264ab263" target="_blank" class="btn linkedin-btn">
-        <i class="fab fa-linkedin"></i> LinkedIn
-    </a>
-    <a href="https://github.com/ammad252" target="_blank" class="btn github-btn">
-        <i class="fab fa-github"></i> GitHub
-    </a>
-</div>
-
+            <div class="hero-buttons">
+                <a href="https://www.linkedin.com/in/ammad-saleem-7264ab263" target="_blank" class="btn linkedin-btn">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/ammad252" target="_blank" class="btn github-btn">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
         </div>
     </div>
 </section>
@@ -56,26 +62,24 @@
             <p>I’m Ammad Saleem, a Computer Science graduate (BCS) from COMSATS University Islamabad.
 I work as a Full-Stack Developer and have practical experience in making user-friendly Android apps. Besides development, I am also focusing on Data Analysis and Machine Learning, using Python to study data, build models, and keep improving my skills.
 Problem-solving is at the heart of my work. I enjoy turning ideas into scalable and efficient solutions and taking on challenges that make user experience and system performance better.</p>
- <a href="files/CV.pdf" download class="download-btn">
+            <a href="files/CV.pdf" download class="download-btn">
                 <i class="fas fa-download"></i> Download CV
             </a>
-</div>
+        </div>
     </div>
 </section>
 
-<!-- Skills -->
+<!-- SKILLS -->
 <section id="skills" class="section skills-section">
     <h1 class="section-title">Skills</h1>
-  
-
     <div class="accordion">
 
         <!-- Programming Languages -->
         <div class="accordion-item">
             <button class="accordion-header">
-    <span class="title">Programming Languages</span>
-    <span class="chevron"></span>
-</button>
+                <span class="title">Programming Languages</span>
+                <span class="chevron"></span>
+            </button>
             <div class="accordion-content">
                 <ul>
                     <li>Java</li>
@@ -89,12 +93,9 @@ Problem-solving is at the heart of my work. I enjoy turning ideas into scalable 
         <!-- Frameworks -->
         <div class="accordion-item">
             <button class="accordion-header">
-    
-     <span class="title">Frameworks & Libraries</span>
-    <span class="chevron"></span>
-</button>
-             
-              
+                <span class="title">Frameworks & Libraries</span>
+                <span class="chevron"></span>
+            </button>
             <div class="accordion-content">
                 <ul>
                     <li>Android SDK (Android Studio – Java)</li>
@@ -106,12 +107,10 @@ Problem-solving is at the heart of my work. I enjoy turning ideas into scalable 
 
         <!-- Mobile Development -->
         <div class="accordion-item">
-                <button class="accordion-header">
-    
-     <span class="title">Mobile Development</span>
-    <span class="chevron"></span>
-</button>
-           
+            <button class="accordion-header">
+                <span class="title">Mobile Development</span>
+                <span class="chevron"></span>
+            </button>
             <div class="accordion-content">
                 <ul>
                     <li>Android App Development (Java)</li>
@@ -122,12 +121,10 @@ Problem-solving is at the heart of my work. I enjoy turning ideas into scalable 
 
         <!-- Data & AI -->
         <div class="accordion-item">
-           <button class="accordion-header">
-    
-     <span class="title">Data Analysis & AI</span>
-    <span class="chevron"></span>
-</button>
-           
+            <button class="accordion-header">
+                <span class="title">Data Analysis & AI</span>
+                <span class="chevron"></span>
+            </button>
             <div class="accordion-content">
                 <ul>
                     <li>Python Data Processing</li>
@@ -139,12 +136,10 @@ Problem-solving is at the heart of my work. I enjoy turning ideas into scalable 
 
         <!-- Tools -->
         <div class="accordion-item">
-           <button class="accordion-header">
-    
-     <span class="title">Tools & Design</span>
-    <span class="chevron"></span>
-</button>
-           
+            <button class="accordion-header">
+                <span class="title">Tools & Design</span>
+                <span class="chevron"></span>
+            </button>
             <div class="accordion-content">
                 <ul>
                     <li>Git & GitHub</li>
@@ -158,16 +153,14 @@ Problem-solving is at the heart of my work. I enjoy turning ideas into scalable 
     </div>
 </section>
 
-<!-- SKILLS -->
-
 <!-- EXPERIENCE -->
 <section id="experience" class="section experience-section">
     <h2>Experience</h2>
     <div class="experience-container">
         <div class="card">
-            <img src="images/exp1.jpg" alt="Experience 1" class="card-img" onclick="window.location.href='experience.html'">
+            <img src="img/food1 (2).png" alt="Experience 1" class="card-img" onclick="window.location.href='experience.html'">
             <h3>Android App Developer</h3>
-            <p>Worked on Android UI and custom app features (click image for details)</p>
+            <p>Worked on Android UI</p>
         </div>
     </div>
 </section>
@@ -177,7 +170,7 @@ Problem-solving is at the heart of my work. I enjoy turning ideas into scalable 
     <h2>Projects</h2>
     <div class="projects-container">
         <div class="card">
-            <img src="images/proj1.jpg" alt="Project 1" class="card-img" onclick="window.location.href='project1.html'">
+            <img src="img/signup.jpg" alt="Project 1" class="card-img" onclick="window.location.href='project1.html'">
             <h3>Smart AI Diet Consultant</h3>
             <p>AI-based diet app (click image for full project details)</p>
         </div>
@@ -199,6 +192,7 @@ Problem-solving is at the heart of my work. I enjoy turning ideas into scalable 
     © 2026 Ammad Saleem
 </footer>
 
+<!-- JS -->
 <script src="script.js"></script>
 </body>
 </html>
