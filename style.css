@@ -70,9 +70,141 @@ nav ul li a.active {
   cursor: pointer;
 }
 
+
+
+/* Desktop */
+nav ul {
+    display: flex;
+    gap: 18px;
+    list-style: none;
+}
+
+nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #e5e7eb;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #22c55e;
+}
+
+/* Mobile / Tablet */
+
+
+/* ================ MOBILE & TABLET NAVBAR ================ */
+@media (max-width: 992px) {  /* tablet + mobile */
+    .nav-container {
+        justify-content: space-between;
+        padding: 10px 15px;
+    }
+
+    nav .logo {
+        font-size: 20px;      /* mobile ke liye chhota */
+        margin-left: 10px;    /* thoda right shift */
+    }
+
+    nav ul {
+        position: absolute;
+        top: 60px;             /* navbar ke niche */
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: linear-gradient(135deg,#0f172a,#1e293b);
+        display: none;         /* initially hidden */
+        text-align: center;
+        padding: 10px 0;
+        z-index: 999;
+    }
+
+    nav ul li {
+        margin: 8px 0;         /* spacing between items */
+    }
+
+    nav ul li a {
+        font-size: 14px;       /* mobile text size */
+        color: #e5e7eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;              /* icon aur text ke beech gap */
+    }
+
+    .hamburger {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* Toggle menu when nav has nav-open class */
+    nav.nav-open ul {
+        display: flex;
+    }
+}
+
+/* Desktop hamburger hide */
+.hamburger {
+    display: none;
+}
+
+
 /* =========================
 HERO SECTION
 ========================= */
+/* Projects Button */
+.projects-btn {
+    background: linear-gradient(135deg,#ff6a00,#ee0979);
+    color: #fff;
+}
+
+.projects-btn:hover {
+    transform: translateY(-3px);
+}
+/* Common Button Styles */
+.hero-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    color: #fff;
+}
+
+/* Gradient Buttons */
+.linkedin-btn { background: linear-gradient(135deg,#0077B5,#0A66C2); }
+.github-btn   { background: linear-gradient(135deg,#333,#6e5494); }
+.projects-btn { background: linear-gradient(135deg,#ff6a00,#ee0979); }
+
+.hero-buttons .btn:hover { transform: translateY(-3px); }
+
+/* Text next to icon */
+.hero-buttons .btn-text { display: inline; font-size: 14px; }
+
+/* =========================
+Responsive: Mobile / Tablet
+========================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .hero-buttons .btn { padding: 10px 14px; gap: 4px; font-size: 13px; }
+    .hero-buttons .btn i { font-size: 18px; }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .hero-buttons { flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .hero-buttons .btn { padding: 10px; font-size: 0; gap: 0; } /* hide text */
+    .hero-buttons .btn i { font-size: 20px; } /* only icon visible */
+}
+
 .hero-banner {
   min-height: 100vh;
   padding: 120px 40px 60px;
@@ -260,8 +392,8 @@ SKILLS ACCORDION
   padding: 0 18px;
 }
 
-.accordion-item.active .accordion-content {
-  max-height: 250px;
+ .accordion-item.active .accordion-content {
+  max-height: 1000px;   /* BIG HEIGHT */
   padding: 10px 18px;
 }
 
@@ -270,6 +402,158 @@ SKILLS ACCORDION
   list-style: disc;
   margin-left: 20px;
 }
+/* =========================
+TECHNICAL SKILLS GRID
+========================= */
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  padding-top: 10px;
+}
+
+/* Skill Box */
+.tech-box {
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.tech-box:hover {
+  transform: translateY(-6px);
+  background: rgba(34,197,94,0.15);
+}
+
+/* Icons */
+.tech-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #22c55e;
+}
+
+/* Titles */
+.tech-box h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+/* Paragraph */
+.tech-box p {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+/* =========================
+TECHNICAL SKILLS GRID DEFAULT (Desktop)
+4 Columns
+========================= */
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+
+/* =========================
+TABLET CSS
+2 - 2 Pair
+========================= */
+@media (max-width: 992px) {
+
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .tech-box {
+    padding: 14px;
+  }
+
+  .tech-icon {
+    font-size: 22px;
+  }
+
+  .tech-box h3 {
+    font-size: 14px;
+  }
+
+  .tech-box p {
+    font-size: 12px;
+  }
+
+}
+
+
+/* =========================
+MOBILE CSS
+2 - 2 Pair
+========================= */
+@media (max-width: 600px) {
+
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .tech-box {
+    padding: 10px;
+  }
+
+  .tech-icon {
+    font-size: 18px;
+  }
+
+  .tech-box h3 {
+    font-size: 12px;
+  }
+
+  .tech-box p {
+    font-size: 10px;
+  }
+
+}
+
+
+/* =========================
+SMALL MOBILE (Extra Small)
+Still 2 Pair
+========================= */
+@media (max-width: 380px) {
+
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .tech-icon {
+    font-size: 16px;
+  }
+
+  .tech-box h3 {
+    font-size: 11px;
+  }
+
+  .tech-box p {
+    font-size: 9px;
+  }
+
+}
+/* Tablet → 2 per row */
+/* Accordion Header Text (Technical Skills) */
+.accordion-header .title {
+    color: #ffffff; /* White color for header text */
+}
+
+
 
 /* =========================
 CARDS / EXPERIENCE / PROJECTS

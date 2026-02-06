@@ -14,20 +14,23 @@
 <body>
 
 <!-- NAVBAR -->
-<nav>
+ <nav>
     <div class="nav-container">
         <div class="logo">Ammad Saleem</div>
         <div class="hamburger"><i class="fas fa-bars"></i></div>
         <ul>
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" class="active"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a href="#about"><i class="fas fa-user"></i><span>About</span></a></li>
+            <li><a href="#skills"><i class="fas fa-tools"></i><span>Skills</span></a></li>
+            <li><a href="#experience"><i class="fas fa-briefcase"></i><span>Experience</span></a></li>
+            <li><a href="#projects"><i class="fas fa-folder-open"></i><span>Projects</span></a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
         </ul>
     </div>
 </nav>
+
+
+
 
 <!-- HERO / ABOUT ME BANNER -->
 <section id="home" class="section hero-banner">
@@ -46,6 +49,9 @@
                 <a href="https://github.com/ammad252" target="_blank" class="btn github-btn">
                     <i class="fab fa-github"></i> GitHub
                 </a>
+                <a href="#projects" class="btn projects-btn">
+        <i class="fas fa-eye"></i> View Projects
+    </a>
             </div>
         </div>
     </div>
@@ -70,88 +76,73 @@ Problem-solving is at the heart of my work. I enjoy turning ideas into scalable 
 </section>
 
 <!-- SKILLS -->
+<!-- TECHNICAL SKILLS -->
 <section id="skills" class="section skills-section">
-    <h1 class="section-title">Skills</h1>
+    <h1 class="section-title">Technical Skills</h1>
+
     <div class="accordion">
 
-        <!-- Programming Languages -->
         <div class="accordion-item">
-            <button class="accordion-header">
-                <span class="title">Programming Languages</span>
-                <span class="chevron"></span>
-            </button>
-            <div class="accordion-content">
-                <ul>
-                    <li>Java</li>
-                    <li>Python</li>
-                    <li>Dart</li>
-                    <li>JavaScript</li>
-                </ul>
-            </div>
-        </div>
 
-        <!-- Frameworks -->
-        <div class="accordion-item">
+            <!-- HEADER -->
             <button class="accordion-header">
-                <span class="title">Frameworks & Libraries</span>
+                <span class="title">
+                    <i class="fas fa-laptop-code"></i> Technical Skills
+                </span>
                 <span class="chevron"></span>
             </button>
-            <div class="accordion-content">
-                <ul>
-                    <li>Android SDK (Android Studio – Java)</li>
-                    <li>Flutter (Mobile UI Development)</li>
-                    <li>HTML5, CSS3, JavaScript</li>
-                </ul>
-            </div>
-        </div>
 
-        <!-- Mobile Development -->
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span class="title">Mobile Development</span>
-                <span class="chevron"></span>
-            </button>
-            <div class="accordion-content">
-                <ul>
-                    <li>Android App Development (Java)</li>
-                    <li>Cross-Platform Apps (Flutter)</li>
-                </ul>
-            </div>
-        </div>
+            <!-- CONTENT -->
+            <div class="accordion-content tech-grid">
 
-        <!-- Data & AI -->
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span class="title">Data Analysis & AI</span>
-                <span class="chevron"></span>
-            </button>
-            <div class="accordion-content">
-                <ul>
-                    <li>Python Data Processing</li>
-                    <li>NumPy & Pandas (Basic–Intermediate)</li>
-                    <li>Machine Learning (Basics)</li>
-                </ul>
-            </div>
-        </div>
+                <!-- Programming -->
+                <div class="tech-box">
+                    <i class="fas fa-code tech-icon"></i>
+                    <h3>Programming</h3>
+                    <p>
+                        Java, Python, Dart and JavaScript developer with strong
+                        OOP concepts and problem-solving skills.
+                    </p>
+                </div>
 
-        <!-- Tools -->
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span class="title">Tools & Design</span>
-                <span class="chevron"></span>
-            </button>
-            <div class="accordion-content">
-                <ul>
-                    <li>Git & GitHub</li>
-                    <li>Figma (UI/UX)</li>
-                    <li>Canva</li>
-                    <li>Microsoft Office</li>
-                </ul>
+                <!-- Mobile Dev -->
+                <div class="tech-box">
+                    <i class="fas fa-mobile-alt tech-icon"></i>
+                    <h3>Mobile Development</h3>
+                    <p>
+                        Android (Java) & Flutter apps with modern UI,
+                        Firebase integration and API handling.
+                    </p>
+                </div>
+
+                <!-- Data & AI -->
+                <div class="tech-box">
+                    <i class="fas fa-brain tech-icon"></i>
+                    <h3>Data & AI</h3>
+                    <p>
+                        Data Analysis using Python, Pandas, NumPy and
+                        basic Machine Learning model development.
+                    </p>
+                </div>
+
+                <!-- Tools -->
+                <div class="tech-box">
+                    <i class="fas fa-tools tech-icon"></i>
+                    <h3>Tools</h3>
+                    <p>
+                        Git, GitHub, Figma, Canva and Microsoft Office
+                        for development, design and documentation.
+                    </p>
+                </div>
+
             </div>
         </div>
 
     </div>
 </section>
+
+
+       
 
 <!-- EXPERIENCE -->
 <section id="experience" class="section experience-section">
