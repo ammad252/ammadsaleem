@@ -552,6 +552,129 @@ Still 2 Pair
 .accordion-header .title {
     color: #ffffff; /* White color for header text */
 }
+/* =========================
+PROJECTS SECTION
+========================= */
+ 
+/* =========================
+RESPONSIVE PROJECTS
+========================= */
+/* =========================
+PROJECTS SECTION
+========================= */
+.projects-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg,#e0f2fe,#f0f9ff);
+}
+
+.projects-section h2 {
+    text-align: center;
+    font-size: 36px;  /* Desktop font unchanged */
+    margin-bottom: 50px;
+    color: #0f172a;
+}
+
+/* Projects Container - Grid */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 cards */
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Project Card */
+.project-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column; /* image top, text below */
+    position: relative;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Project Image - Desktop size unchanged */
+.project-card .project-img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;  /* Desktop height */
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Project Text - Desktop unchanged */
+.project-card h3 {
+    font-size: 20px;
+    margin: 15px 20px 5px;
+    color: #0f172a;
+}
+
+.project-card .project-short-desc {
+    font-size: 14px;
+    margin: 0 20px 10px;
+    color: #334155;
+}
+
+.project-card .project-details {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.4em;
+    margin: 0 20px 20px;
+    max-height: 9.8em; /* 7 lines approx */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* View Project Button Overlay */
+.project-card .view-project {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg,#22c55e,#16a34a);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.project-card:hover .view-project {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* =========================
+RESPONSIVE PROJECTS
+========================= */
+
+/* Tablet - max-width: 992px */
+@media (max-width: 992px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+        gap: 20px;
+    }
+
+    .project-card .project-img { max-height: 150px; }
+    .project-card h3 { font-size: 18px; }
+    .project-card .project-short-desc { font-size: 13px; }
+    .project-card .project-details { font-size: 12px; max-height: 9em; }
+    .project-card .view-project { font-size: 12px; padding: 6px 14px; }
+}
+
+/* Mobile - max-width: 600px */
+ 
 
 
 
@@ -673,3 +796,124 @@ RESPONSIVE DESIGN
   .card-img { max-width: 140px; }
   .section-title { font-size: 24px; }
 }
+ 
+
+/* Responsive */
+ /* =========================
+RESPONSIVE DESIGN - HERO / ABOUT / CARDS / PROJECTS
+========================= */
+
+/* Desktop - default sizes are already defined above */
+
+/* Tablet: max-width 992px */
+@media (max-width: 992px) {
+    /* HERO */
+    .hero-banner { padding: 100px 20px; }
+    .hero-img img { width: 220px; }
+    .hero-text h1 { font-size: 28px; }
+    .hero-text h2 { font-size: 20px; }
+    .hero-text p  { font-size: 14px; }
+    .hero-buttons .btn { padding: 10px 14px; gap: 4px; font-size: 13px; }
+    .hero-buttons .btn i { font-size: 18px; }
+
+    /* ABOUT */
+    .about-img img { width: 180px; }
+    .about-text h2 { font-size: 24px; }
+    .about-text p { font-size: 13px; }
+
+    /* CARDS */
+    .card-img { max-width: 200px; }
+    .card h3 { font-size: 16px; }
+    .card p { font-size: 13px; }
+
+    /* PROJECTS */
+    .projects-container { grid-template-columns: 1fr; gap: 15px; }
+    .project-title { font-size: 18px; }
+    .project-short-desc { font-size: 13px; }
+    .project-details { font-size: 12px; }
+}
+
+/* Mobile: max-width 600px */
+@media (max-width: 600px) {
+    /* HERO */
+    .hero-banner { padding: 80px 15px; }
+    .hero-img img { width: 150px; }
+    .hero-text h1 { font-size: 20px; }
+    .hero-text h2 { font-size: 16px; }
+    .hero-text p  { font-size: 12px; }
+    .hero-buttons { justify-content: center; flex-wrap: wrap; gap: 8px; }
+    .hero-buttons .btn { padding: 10px; font-size: 0; gap: 0; } /* hide text, show icon only */
+    .hero-buttons .btn i { font-size: 20px; }
+
+    /* ABOUT */
+    .about-img img { width: 140px; }
+    .about-text h2 { font-size: 20px; }
+    .about-text p { font-size: 12px; }
+
+    /* CARDS */
+    .card-img { max-width: 160px; }
+    .card h3 { font-size: 14px; }
+    .card p { font-size: 11px; }
+
+    /* PROJECTS */
+    .projects-container { grid-template-columns: 1fr; gap: 12px; }
+    .project-title { font-size: 16px; }
+    .project-short-desc { font-size: 12px; }
+    .project-details { font-size: 11px; }
+    .view-project { padding: 6px 12px; font-size: 12px; }
+}
+
+/* Extra Small Mobile: max-width 380px */
+@media (max-width: 380px) {
+    .hero-img img { width: 120px; }
+    .hero-text h1 { font-size: 18px; }
+    .hero-text h2 { font-size: 14px; }
+    .hero-text p { font-size: 11px; }
+
+    .about-img img { width: 110px; }
+    .about-text h2 { font-size: 18px; }
+    .about-text p { font-size: 10px; }
+
+    .card-img { max-width: 140px; }
+    .card h3 { font-size: 12px; }
+    .card p { font-size: 10px; }
+
+    .projects-container { gap: 10px; }
+    .project-title { font-size: 14px; }
+    .project-short-desc { font-size: 11px; }
+    .project-details { font-size: 10px; }
+    .view-project { padding: 5px 10px; font-size: 11px; }
+}
+/* =========================
+PARAGRAPH HEIGHT CONTROL - DESKTOP
+========================= */
+ /* =========================
+HERO & ABOUT IMAGES RESPONSIVE SIZE
+========================= */
+
+/* Desktop */
+.hero-img img,
+.about-img img {
+    width: 260px;         /* chhota size desktop par */
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .hero-img img,
+    .about-img img {
+        width: 180px;     /* thoda chhota tablet ke liye */
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .hero-img img,
+    .about-img img {
+        width: 140px;     /* chhota mobile ke liye */
+    }
+}
+
+
