@@ -563,122 +563,140 @@ RESPONSIVE PROJECTS
 PROJECTS SECTION
 ========================= */
 
-.project-card {
-    background: #fff;
+ /* =========================
+PROJECTS SLIDER / CARDS
+========================= */
+/* =========================
+PROJECTS SECTION
+========================= */
+.projects-section {
+    background: linear-gradient(135deg,#f0fdfa,#d1fae5); /* Light green gradient background */
+    padding: 60px 20px;
+}
+
+.projects-swiper {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.swiper-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.swiper-slide {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+}
+
+ .project-card {
+    width: 100%;           /* container ke hisaab se full width */
+    max-width: 280px;      /* maximum width desktop/mobile */
+    background: linear-gradient(145deg,#ffffff,#e5f9f0);
     border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 12px;
     display: flex;
     flex-direction: column;
-    position: relative;
-    padding: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Image */
 .project-card .project-img {
-    width: 100%;
-    height: auto;          /* maintain aspect ratio */
+    width: 100%;           /* full width of card */
+    height: auto;          /* height auto for proper aspect ratio */
+    max-height: 180px;     /* limit height so not too tall */
+    object-fit: cover;     /* maintain image fill nicely */
     border-radius: 12px;
-    object-fit: contain;   /* full image visible, no crop */
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
-/* Titles & Descriptions */
-.project-card .project-title {
-    font-size: 20px;
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+ 
+
+.project-title {
+    font-size: 16px;
     color: #0f172a;
-    margin: 10px 0 5px;
+    margin-bottom: 4px;
+    font-weight: 600;
 }
 
-.project-card .project-short-desc {
-    font-size: 14px;
+.project-short-desc {
+    font-size: 13px;
     color: #334155;
     margin-bottom: 8px;
 }
 
-.project-card .project-details {
-    font-size: 13px;
-    color: #475569;
-    line-height: 1.5;
-    max-height: 9.8em;  /* 7 lines approx */
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* Hover button */
-.project-card .view-project {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
+.view-project {
+    display: inline-block;
+    margin-top: auto;
     background: linear-gradient(135deg,#22c55e,#16a34a);
     color: #fff;
-    padding: 8px 16px;
+    padding: 6px 10px;
     border-radius: 8px;
-    font-weight: 600;
     text-decoration: none;
-    opacity: 0;
-    transition: opacity 0.3s, transform 0.3s;
+    font-weight: 600;
+    text-align: center;
+    font-size: 12px;
+    transition: 0.3s;
 }
 
-.project-card:hover .view-project {
+.view-project:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg,#16a34a,#22c55e);
+}
+
+/* Pagination / Navigation */
+.swiper-pagination-bullet {
+    background: #22c55e;
+    opacity: 0.5;
+    margin: 0 4px !important;
+}
+.swiper-pagination-bullet-active {
     opacity: 1;
-    transform: translateX(-50%) translateY(-5px);
+}
+.swiper-button-next,
+.swiper-button-prev {
+    color: #22c55e;
+    width: 32px;
+    height: 32px;
 }
 
-/* ------------------------
-Responsive Grid & Images
------------------------- */
-
-/* Desktop */
-@media (min-width: 992px) {
-    .projects-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
-    .project-card .project-img {
-        max-height: 180px; /* Desktop image height */
-        width: 100%;       /* full width */
-    }
-}
+/* =========================
+RESPONSIVE ADJUSTMENTS
+========================= */
 
 /* Tablet */
 @media (max-width: 992px) {
-    .projects-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-    .project-card .project-img {
-        max-height: 140px;
-        width: 100%;
-    }
+    .project-card { width: 220px; }
+    .project-card .project-img { height: 180px; } /* Keep same height */
+    .project-title { font-size: 14px; }
+    .project-short-desc { font-size: 12px; }
+    .view-project { font-size: 11px; padding: 5px 8px; }
 }
 
 /* Mobile */
-@media (max-width: 768px) {
-    .projects-container {
-        grid-template-columns: 1fr; /* 1 per row */
-        gap: 12px;
-    }
-    .project-card .project-img {
-        max-height: 120px;
-        width: 100%;
-    }
+@media (max-width: 600px) {
+    .project-card { width: 180px; }
+    .project-card .project-img { height: 180px; } /* Same height for all */
+    .project-title { font-size: 13px; }
+    .project-short-desc { font-size: 11px; }
+    .view-project { font-size: 10px; padding: 4px 6px; }
 }
 
 /* Extra Small Mobile */
-@media (max-width: 480px) {
-    .project-card .project-img {
-        max-height: 100px;
-        width: 100%;
-    }
-    .project-card .project-title { font-size: 16px; }
-    .project-card .project-short-desc { font-size: 12px; }
-    .project-card .project-details { font-size: 11px; }
-    .project-card .view-project { padding: 6px 12px; font-size: 12px; }
+@media (max-width: 380px) {
+    .project-card { width: 160px; }
+    .project-card .project-img { height: 180px; } /* Fixed height */
+    .project-title { font-size: 12px; }
+    .project-short-desc { font-size: 10px; }
+    .view-project { font-size: 10px; padding: 4px 6px; }
 }
+
 
 /* Mobile - max-width: 600px */
  
@@ -923,4 +941,106 @@ HERO & ABOUT IMAGES RESPONSIVE SIZE
     }
 }
 
+/* Mobile: sirf icon dikhaye, text hide */
+@media (max-width: 600px) {
+    .hero-buttons .btn {
+        padding: 10px;          /* sirf icon ke liye padding */
+        font-size: 0;            /* text hide */
+        justify-content: center; /* icon center */
+    }
+    .hero-buttons .btn i {
+        font-size: 20px;         /* icon size */
+        color: #fff;
+    }
+}
 
+/* =========================
+SECTION TITLES - DEFAULT (Desktop)
+========================= */
+.section-title,
+.experience-section h2,
+.projects-section h2 {
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #0f172a; /* Dark text color */
+}
+
+/* Desktop default */
+.section-title,
+.experience-section h2,
+.projects-section h2 {
+    font-size: 36px;
+}
+
+/* Tablet: max-width 992px */
+@media (max-width: 992px) {
+    .section-title,
+    .experience-section h2,
+    .projects-section h2 {
+        font-size: 28px; /* thoda chhota tablet ke liye */
+    }
+}
+
+/* Mobile: max-width 600px */
+@media (max-width: 600px) {
+    .section-title,
+    .experience-section h2,
+    .projects-section h2 {
+        font-size: 22px; /* mobile ke liye */
+    }
+}
+
+/* Extra Small Mobile: max-width 380px */
+@media (max-width: 380px) {
+    .section-title,
+    .experience-section h2,
+    .projects-section h2 {
+        font-size: 18px; /* extra small mobile */
+    }
+}
+/* =========================
+SECTION TITLES COLOR & SIZE
+========================= */
+.section-title,
+.experience-section h2,
+.projects-section h2 {
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #ffffff; /* white color for all titles */
+}
+
+/* Desktop default */
+.section-title,
+.experience-section h2,
+.projects-section h2 {
+    font-size: 36px;
+}
+
+/* Tablet: max-width 992px */
+@media (max-width: 992px) {
+    .section-title,
+    .experience-section h2,
+    .projects-section h2 {
+        font-size: 28px;
+    }
+}
+
+/* Mobile: max-width 600px */
+@media (max-width: 600px) {
+    .section-title,
+    .experience-section h2,
+    .projects-section h2 {
+        font-size: 22px;
+    }
+}
+
+/* Extra Small Mobile: max-width 380px */
+@media (max-width: 380px) {
+    .section-title,
+    .experience-section h2,
+    .projects-section h2 {
+        font-size: 18px;
+    }
+}

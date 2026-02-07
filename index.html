@@ -7,7 +7,7 @@
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -158,45 +158,60 @@ Problem-solving is at the heart of my work. I enjoy turning ideas into scalable 
 
 <!-- PROJECTS -->
  <!-- PROJECTS -->
+
 <section id="projects" class="section projects-section">
     <h2>Projects</h2>
-    <div class="projects-container">
 
-        <!-- Project Item -->
-        <div class="project-card">
-            <img src="img/signup.jpg" alt="Smart AI Diet Consultant" class="project-img">
-            
-            <!-- Title -->
-            <h3 class="project-title">Smart AI Diet Consultant</h3>
-            
-            <!-- Small Description -->
-            <p class="project-short-desc">AI-based diet app with smart recommendations</p>
-            
-            <!-- Paragraph / Detailed Info -->
-            <p class="project-details">
-                This project allows users to get personalized diet plans based on their body metrics and goals. 
-                It is built using Android Studio (Java) with Firebase backend and provides a friendly user interface. 
-                Users can track their diet, get AI-based suggestions, and manage their progress efficiently.
-            </p>
-
-            <!-- Hover "View Project" overlay -->
-            <a href="project.html" class="view-project">View Project</a>
+    <div class="projects-swiper swiper">
+        <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+                <div class="project-card">
+                    <img src="img/signup.jpg" alt="Smart AI Diet Consultant" class="project-img">
+                    <h3 class="project-title">Smart AI Diet Consultant</h3>
+                    <p class="project-short-desc">AI-based diet app with smart recommendations</p>
+                    <a href="project.html" class="view-project">View Project</a>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+                <div class="project-card">
+                    <img src="img/foodapp.jpg" alt="Other Project" class="project-img">
+                    <h3 class="project-title">Food App Delivery</h3>
+                    <p class="project-short-desc">A food delivery app  users can order dishes and place Normal or Special Orders.
+Admins can manage users, dishes.</p>
+                    <a href="otherproject.html" class="view-project">View Project</a>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+                <div class="project-card">
+                    <img src="img/project3.jpg" alt="Project 3" class="project-img">
+                    <h3 class="project-title">Project 3</h3>
+                    <p class="project-short-desc">Another project description</p>
+                    <a href="#" class="view-project">View Project</a>
+                </div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+                <div class="project-card">
+                    <img src="img/project4.jpg" alt="Project 4" class="project-img">
+                    <h3 class="project-title">Project 4</h3>
+                    <p class="project-short-desc">Another project description</p>
+                    <a href="#" class="view-project">View Project</a>
+                </div>
+            </div>
         </div>
 
-        <!-- Another Project Example -->
-        <div class="project-card">
-            <img src="img/otherproject.jpg" alt="Other Project" class="project-img">
-            <h3 class="project-title">Other Project</h3>
-            <p class="project-short-desc">Short description of the project</p>
-            <p class="project-details">
-                Detailed paragraph about the project goes here. You can explain tech stack, 
-                functionality, and any unique features that make it interesting.
-            </p>
-            <a href="otherproject.html" class="view-project">View Project</a>
-        </div>
+        <!-- Pagination dots -->
+        <div class="swiper-pagination"></div>
 
+        <!-- Navigation arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
 </section>
+
 
 
 <!-- CONTACT -->
