@@ -84,7 +84,31 @@
     background: linear-gradient(135deg, #a855f7, #7c3aed);
 }
 
- 
+ /* Tablet: 768px – 992px */
+@media (max-width: 992px) and (min-width: 768px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row tablet */
+        gap: 18px;
+    }
+}
+
+/* Mobile: <768px */
+@media (max-width: 767px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row mobile */
+        gap: 15px;
+    }
+
+    .project-card { max-width: 160px; padding: 10px; }
+    .project-card .view-btn { padding: 8px 12px; font-size: 12px; }
+}
+
+/* Extra small mobile <380px */
+@media (max-width: 380px) {
+    .projects-container { gap: 10px; }
+    .project-card { max-width: 140px; padding: 8px; }
+    .project-card .view-btn { padding: 6px 10px; font-size: 11px; }
+}
 
 /* RESPONSIVE IMAGES */
 @media(max-width: 992px){

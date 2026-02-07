@@ -569,132 +569,151 @@ PROJECTS SLIDER / CARDS
 /* =========================
 PROJECTS SECTION
 ========================= */
-.projects-section {
-    background: linear-gradient(135deg,#f0fdfa,#d1fae5); /* Light green gradient background */
-    padding: 60px 20px;
+ /* Projects Grid */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 in one row */
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
 }
 
-.projects-swiper {
-    width: 100%;
-    padding: 20px 0;
-}
-
-.swiper-wrapper {
-    display: flex;
-    align-items: flex-start;
-}
-
-.swiper-slide {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-}
-
- .project-card {
-    width: 100%;           /* container ke hisaab se full width */
-    max-width: 280px;      /* maximum width desktop/mobile */
-    background: linear-gradient(145deg,#ffffff,#e5f9f0);
-    border-radius: 16px;
-    padding: 12px;
+/* Project Card */
+.project-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    border-left: 5px solid #22c55e;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    transition: transform 0.3s, box-shadow 0.3s;
+    align-items: center;
+    max-width: 280px;
 }
 
-.project-card .project-img {
-    width: 100%;           /* full width of card */
-    height: auto;          /* height auto for proper aspect ratio */
-    max-height: 180px;     /* limit height so not too tall */
-    object-fit: cover;     /* maintain image fill nicely */
+.project-card img {
+    width: 100%;
     border-radius: 12px;
-    margin-bottom: 10px;
 }
 
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
- 
-
-.project-title {
-    font-size: 16px;
-    color: #0f172a;
-    margin-bottom: 4px;
-    font-weight: 600;
-}
-
-.project-short-desc {
-    font-size: 13px;
-    color: #334155;
-    margin-bottom: 8px;
-}
-
-.view-project {
-    display: inline-block;
-    margin-top: auto;
+.project-card .view-btn {
+    margin-top: 10px;
     background: linear-gradient(135deg,#22c55e,#16a34a);
     color: #fff;
-    padding: 6px 10px;
+    padding: 10px 15px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
+    display: inline-block;
+}
+.projects-page h2 {
+    font-weight: 700;
+    margin-bottom: 30px;
     text-align: center;
-    font-size: 12px;
-    transition: 0.3s;
+    color: #0f172a; /* ya white agar dark background */
+    font-size: 36px;
 }
-
-.view-project:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(135deg,#16a34a,#22c55e);
+/* SECTION TITLES FIX */
+.section-title,
+.experience-section h2,
+.projects-page h2,
+.about-section h2,
+.contact-section h2 {
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #0f172a; /* agar dark background ho to #fff use karo */
+    z-index: 10;    /* upar dikhne ke liye */
+    position: relative; /* ensure overlay issues nahi */
 }
-
-/* Pagination / Navigation */
-.swiper-pagination-bullet {
-    background: #22c55e;
-    opacity: 0.5;
-    margin: 0 4px !important;
+/* Desktop default */
+.section-title,
+.section-experience-section h2,
+.projects-page h2,
+.about-section h2,
+.contact-section h2 {
+    font-size: 36px;
 }
-.swiper-pagination-bullet-active {
-    opacity: 1;
-}
-.swiper-button-next,
-.swiper-button-prev {
-    color: #22c55e;
-    width: 32px;
-    height: 32px;
-}
-
-/* =========================
-RESPONSIVE ADJUSTMENTS
-========================= */
 
 /* Tablet */
 @media (max-width: 992px) {
-    .project-card { width: 220px; }
-    .project-card .project-img { height: 180px; } /* Keep same height */
-    .project-title { font-size: 14px; }
-    .project-short-desc { font-size: 12px; }
-    .view-project { font-size: 11px; padding: 5px 8px; }
+    .section-title,
+    .section-experience-section h2,
+    .projects-page h2,
+    .about-section h2,
+    .contact-section h2 {
+        font-size: 28px;
+    }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
-    .project-card { width: 180px; }
-    .project-card .project-img { height: 180px; } /* Same height for all */
-    .project-title { font-size: 13px; }
-    .project-short-desc { font-size: 11px; }
-    .view-project { font-size: 10px; padding: 4px 6px; }
+    .section-title,
+    .section-experience-section h2,
+    .projects-page h2,
+    .about-section h2,
+    .contact-section h2 {
+        font-size: 22px;
+    }
+}
+
+/* Extra small mobile */
+@media (max-width: 380px) {
+    .section-title,
+    .section-experience-section h2,
+    .projects-page h2,
+    .about-section h2,
+    .contact-section h2 {
+        font-size: 18px;
+    }
+}
+
+/* =========================
+Responsive
+========================= */
+
+/* Tablet: 2 per row */
+@media (max-width: 992px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr); /* 2×2 layout */
+        gap: 18px;
+    }
+}
+
+/* Mobile: 2 per row */
+@media (max-width: 600px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr); /* same 2×2 layout */
+        gap: 15px;
+    }
+
+    .project-card {
+        max-width: 160px;
+        padding: 10px;
+    }
+
+    .project-card .view-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
 }
 
 /* Extra Small Mobile */
 @media (max-width: 380px) {
-    .project-card { width: 160px; }
-    .project-card .project-img { height: 180px; } /* Fixed height */
-    .project-title { font-size: 12px; }
-    .project-short-desc { font-size: 10px; }
-    .view-project { font-size: 10px; padding: 4px 6px; }
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .project-card {
+        max-width: 140px;
+        padding: 8px;
+    }
+
+    .project-card .view-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
 }
 
 
@@ -852,10 +871,7 @@ RESPONSIVE DESIGN - HERO / ABOUT / CARDS / PROJECTS
     .card p { font-size: 13px; }
 
     /* PROJECTS */
-    .projects-container { grid-template-columns: 1fr; gap: 15px; }
-    .project-title { font-size: 18px; }
-    .project-short-desc { font-size: 13px; }
-    .project-details { font-size: 12px; }
+    
 }
 
 /* Mobile: max-width 600px */
@@ -1043,4 +1059,131 @@ SECTION TITLES COLOR & SIZE
     .projects-section h2 {
         font-size: 18px;
     }
+}
+
+
+
+
+
+/* =========================
+CONTACT SECTION
+========================= */
+ .contact-section {
+    padding: 50px 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-icons {
+    display: flex;
+    gap: 30px;
+}
+
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    color: #555;
+    font-size: 28px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.contact-icon:hover {
+    transform: translateY(-5px);
+}
+
+.contact-icon.whatsapp:hover {
+    background-color: #25d366;
+    color: #fff;
+}
+
+.contact-icon.linkedin:hover {
+    background-color: #0a66c2;
+    color: #fff;
+}
+
+.contact-icon.github:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.contact-section p {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #555;
+}
+.contact-icon.email:hover {
+    background-color: #EA4335; /* Gmail red */
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .contact-icons {
+        gap: 20px;
+    }
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+
+/* =========================
+RESPONSIVE GRID & NAV FIX
+========================= */
+
+/* Desktop: 4 project cards, nav horizontal */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
+/* Tablet: 2 per row */
+@media (max-width: 992px) and (min-width: 768px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    nav ul {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg,#0f172a,#1e293b);
+        flex-direction: column;
+        display: none;
+        text-align: center;
+        padding: 10px 0;
+        z-index: 999;
+    }
+
+    nav.nav-open ul { display: flex; }
+    .hamburger { display: block; }
+}
+
+/* Mobile: 2 per row */
+@media (max-width: 767px) {
+    .projects-container { grid-template-columns: repeat(2, 1fr); }
+    .contact-container { flex-direction: column; gap: 20px; }
+}
+
+/* Extra small mobile <380px */
+@media (max-width: 380px) {
+    .projects-container { gap: 10px; }
+    .project-card { max-width: 140px; padding: 8px; }
 }
