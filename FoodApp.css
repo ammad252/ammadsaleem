@@ -1,62 +1,71 @@
- .projects-page {
-    padding: 100px 20px;
-    background: linear-gradient(to right, #cffafe, #bae6fd); /* Soft teal-blue gradient */
+
+ /* Page Background */
+body {
+    background: linear-gradient(to bottom right, #f0fdfa, #d1fae5); /* Light green gradient */
+    font-family: 'Poppins', sans-serif;
+    color: #1f2937;
+}
+
+/* Projects Page */
+.projects-page {
+    padding: 120px 20px;
+    background: linear-gradient(to right, #ede9fe, #ddd6fe); /* Subtle purple gradient */
     min-height: 100vh;
 }
 
-/* Container */
-.projects-container {
-    max-width: 1000px;
-    margin: 0 auto;
+/* Project Sections Card Look */
+.projects-section {
+    background: linear-gradient(145deg, #ffffff, #e0f7f1); /* Light gradient card */
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.projects-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* Project Text Background */
+.project-text {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 12px 15px;
+    border-radius: 12px;
 }
 
 /* Project Summary */
 .project-summary {
-    background: linear-gradient(135deg, #1d46cf, #2230ee); /* Teal-cyan gradient */
-    color: #ffffff;
-    padding: 18px 22px;
-    border-radius: 14px;
-    text-align: justify;
+    background: linear-gradient(135deg, #22c55e, #16a34a); /* Green gradient */
+    color: #fff;
+    padding: 20px 25px;
+    border-radius: 16px;
     font-weight: 600;
-    line-height: 1.7;
-    margin-bottom: 40px;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 50px;
 }
 
-/* Each Project Section */
-.projects-section {
-    display: flex;
-    flex-direction: column; 
-    gap: 25px;
-    margin-bottom: 40px;
-}
-
-/* Section Text */
-.projects-section .project-text h3 {
-    font-size: 22px;
-    color: #0e7490; /* Dark teal */
-    margin-bottom: 10px;
-}
-.projects-section .project-text p {
-    font-size: 16px;
-    line-height: 1.7;
-    margin-bottom: 12px;
-}
-.projects-section .project-text ul li {
-    margin-bottom: 8px;
-}
-
-/* Images */
+/* Images Section */
 .project-images {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
+    justify-content: center;
 }
+
+/* Each Image Styling */
 .project-images img {
-    width: calc(50% - 5px);
-    max-width: 200px;
+    width: calc(50% - 7.5px);
+    max-width: 220px;
     border-radius: 16px;
-    border: 3px solid #06b6d4; /* Teal border */
+    border: 3px solid #22c55e; /* Green border */
     object-fit: cover;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.project-images img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 /* Back Button */
@@ -66,19 +75,45 @@
     justify-content: center;
     gap: 8px;
     padding: 12px 25px;
-    background: linear-gradient(135deg, #06b6d4, #22d3ee); /* matching button */
+    background: linear-gradient(135deg, #22c55e, #16a34a);
     color: #fff;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    margin: 40px auto 0;
+    margin: 40px auto 0;  /* center horizontally */
     transition: all 0.3s;
 }
 .back-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    background: linear-gradient(135deg, #22d3ee, #06b6d4);
+    background: linear-gradient(135deg, #16a34a, #22c55e);
 }
+
+/* Section Titles */
+.projects-section .project-text h3 {
+    font-size: 22px;
+    color: #15803d; /* Dark green */
+    margin-bottom: 10px;
+}
+
+/* Paragraphs */
+.projects-section .project-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+/* List Items */
+.projects-section .project-text ul li {
+    margin-bottom: 8px;
+}
+
+/* Add subtle shadow to sections */
+.projects-section {
+    border: 1px solid #d1fae5;
+}
+
+
  /* Tablet: 768px – 992px */
 @media (max-width: 992px) and (min-width: 768px) {
     .projects-container {

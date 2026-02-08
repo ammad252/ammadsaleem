@@ -1187,3 +1187,127 @@ RESPONSIVE GRID & NAV FIX
     .projects-container { gap: 10px; }
     .project-card { max-width: 140px; padding: 8px; }
 }
+
+
+/* EDUCATION SECTION */
+ /* EDUCATION SECTION */
+.education-section {
+    padding: 100px 20px 60px 20px; /* top gap from page start */
+    background-color: #d7e2e9; /* Light blue background - change yahan */
+    min-height: 50vh;
+}
+
+/* Agar gradient chahiye */
+.education-section {
+    padding: 100px 20px 60px 20px;
+    background: linear-gradient(to right, #f5df1b, #eef123f3); /* Light purple gradient */
+    min-height: 50vh;
+}
+
+/* Container to align content */
+.education-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Section Title */
+.education-section .section-title {
+    font-size: 48px; /* Desktop */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #4c1d95;
+}
+
+/* Accordion Item */
+.education-section .accordion-item {
+    margin-bottom: 25px;
+}
+
+/* Accordion Header */
+.education-section .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #6366f1;
+    color: #fff;
+    padding: 18px 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 22px; /* Desktop */
+    border: none;
+    transition: background 0.3s;
+}
+
+.education-section .accordion-header:hover {
+    background: #4f46e5;
+}
+
+/* Chevron rotation */
+.education-section .accordion-header .chevron i {
+    transition: transform 0.3s;
+}
+.education-section .accordion-header.active .chevron i {
+    transform: rotate(180deg);
+}
+
+/* Accordion Content */
+.education-section .accordion-content {
+    display: none;
+    padding: 20px 25px;
+    background: #f8fafc;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+/* Education List */
+.education-section .accordion-content ul {
+    list-style: disc;
+    padding-left: 20px;
+    line-height: 1.8;
+}
+.education-section .accordion-content ul li {
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+/* Responsive Adjustments */
+@media(max-width:1200px){
+    .education-section .section-title { font-size: 40px; }
+    .education-section .accordion-header { font-size: 20px; padding: 16px 20px; }
+    .education-section .accordion-content ul li { font-size: 16px; }
+}
+@media(max-width:992px){
+    .education-section .section-title { font-size: 36px; }
+    .education-section .accordion-header { font-size: 18px; padding: 14px 18px; }
+    .education-section .accordion-content ul li { font-size: 15px; }
+}
+@media(max-width:768px){
+    .education-section .section-title { font-size: 32px; }
+    .education-section .accordion-header { font-size: 16px; padding: 12px 16px; }
+    .education-section .accordion-content ul li { font-size: 14px; }
+}
+@media(max-width:480px){
+    .education-section .section-title { font-size: 28px; }
+    .education-section .accordion-header { font-size: 14px; padding: 10px 14px; }
+    .education-section .accordion-content ul li { font-size: 13px; }
+}
+/* Experience Section Button */
+.card .view-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: linear-gradient(135deg,#22c55e,#16a34a); /* green gradient */
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.card .view-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg,#16a34a,#22c55e); /* hover effect */
+}

@@ -10,104 +10,120 @@
         /* =====================
            EXPERIENCE PAGE STYLING
         ====================== */
-        .experience-page {
-            padding: 100px 20px;
-            background: linear-gradient(to right, #d1fae5, #a7f3d0);
-            min-height: 100vh;
-        }
+        /* Page Background */
+.experience-page {
+    padding: 120px 20px;
+    background: linear-gradient(to bottom right, #f0fdfa, #d1fae5); /* Light green gradient */
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: #1f2937;
+}
 
-        .experience-container {
-            max-width: 1000px;
-            margin: auto;
-        }
+/* Container */
+.experience-container {
+    max-width: 1000px;
+    margin: auto;
+}
 
-        .experience-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 40px;
-            margin-top: 40px;
-        }
+/* Section Title */
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    color: #15803d; /* Dark green */
+    margin-bottom: 40px;
+}
 
-        /* IMAGE STYLING */
-        .experience-img {
-            display: flex;
-            flex-direction: row; /* images side by side */
-            gap: 20px;
-            flex-shrink: 0;
-        }
+/* Content Flex */
+.experience-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 20px;
+    background: linear-gradient(145deg, #ffffff, #e0f7f1); /* Card look */
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.experience-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
 
-        .experience-img img {
-            width: 100%;
-            max-width: 200px; /* desktop image size */
-            border-radius: 16px;
-            border: 3px solid #22c55e;
-            object-fit: cover;
-        }
+/* Images */
+.experience-img {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-shrink: 0;
+}
+.experience-img img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 16px;
+    border: 3px solid #22c55e; /* Green border */
+    object-fit: cover;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.experience-img img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
 
-        /* TEXT STYLING */
-        .experience-text {
-            flex: 1;
-        }
+/* Text */
+.experience-text {
+    flex: 1;
+}
+.experience-text p {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+.experience-list li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+}
 
-        .experience-text p {
-            font-size: 17px;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
+/* Back Button */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: all 0.3s;
+}
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+}
 
-        .experience-list li {
-            margin-bottom: 10px;
-            font-size: 16px;
-            line-height: 1.6;
-        }
+/* Responsive */
+@media (max-width: 992px) {
+    .experience-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 25px;
+        padding: 25px;
+    }
+    .experience-img img {
+        max-width: 180px;
+    }
+}
+@media (max-width: 600px) {
+    .experience-img img {
+        max-width: 140px;
+    }
+}
 
-        /* BACK BUTTON */
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 25px;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: #fff;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: all 0.3s;
-        }
-
-        .back-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            background: linear-gradient(135deg, #16a34a, #22c55e);
-        }
-
-        /* SECTION TITLE */
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            color: #1f2937;
-        }
-
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 992px) {
-            .experience-content {
-                flex-direction: column; /* stacked on smaller tablets */
-                align-items: center;
-                text-align: center;
-                gap: 25px;
-            }
-
-            .experience-img img {
-                max-width: 180px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .experience-img img {
-                max-width: 140px; /* mobile image size */
-            }
-        }
     </style>
 </head>
 <body>
@@ -136,7 +152,7 @@
         <div class="experience-content">
             <div class="experience-img">
                 <img src="img/food1 (3).png" alt="Experience 1">
-                <img src="img/food2.png" alt="Experience 2">
+                <img src="img/food1 (2).png" alt="Experience 2">
             </div>
             <div class="experience-text">
                 <p>Worked remotely Android Studio Java:</p>

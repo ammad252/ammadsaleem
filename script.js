@@ -18,6 +18,20 @@ window.addEventListener("scroll", () => {
         }
     });
 });
+// Education Accordion Toggle
+const eduHeader = document.querySelectorAll('.education-section .accordion-header');
+
+eduHeader.forEach(header => {
+    header.addEventListener('click', () => {
+        header.classList.toggle('active'); // Arrow rotation
+        const content = header.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+});
 
 // Skills accordion
  
