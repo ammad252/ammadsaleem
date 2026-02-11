@@ -220,3 +220,40 @@ nav ul li a:hover {
         display:block;
     }
 }
+/* SOURCE CODE BUTTON */
+.source-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 22px;
+    background:linear-gradient(135deg,#111827,#374151);
+    color:#fff;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:600;
+    margin-top:10px;
+    transition:0.3s;
+}
+
+.source-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.25);
+    background:linear-gradient(135deg,#000,#1f2937);
+}/* Mobile: icon only */
+@media (max-width: 480px){
+
+    .source-btn{
+        padding:12px;
+        border-radius:50%;
+        justify-content:center;
+    }
+
+    .source-btn .btn-text{
+        display:none;
+    }
+
+    .source-btn i{
+        font-size:20px;
+    }
+}
+
