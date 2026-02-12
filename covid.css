@@ -1,0 +1,293 @@
+
+ /* Page Background */
+body {
+    background: linear-gradient(to bottom right, #f0fdfa, #d1fae5); /* Light green gradient */
+    font-family: 'Poppins', sans-serif;
+    color: #1f2937;
+}
+
+/* Projects Page */
+.projects-page {
+    padding: 120px 20px;
+    background: linear-gradient(to right, #ede9fe, #ddd6fe); /* Subtle purple gradient */
+    min-height: 100vh;
+}
+
+/* Project Sections Card Look */
+.projects-section {
+    background: linear-gradient(145deg, #ffffff, #e0f7f1); /* Light gradient card */
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.projects-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* Project Text Background */
+.project-text {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 12px 15px;
+    border-radius: 12px;
+}
+
+/* Project Summary */
+.project-summary {
+    background: linear-gradient(135deg, #22c55e, #16a34a); /* Green gradient */
+    color: #fff;
+    padding: 20px 25px;
+    border-radius: 16px;
+    font-weight: 600;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 50px;
+}
+
+/* Images Section */
+.project-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Each Image Styling */
+.project-images img {
+    width: 320px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 3px solid #22c55e;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-images img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Back Button */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 40px auto 0;  /* center horizontally */
+    transition: all 0.3s;
+}
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+}
+
+/* Section Titles */
+.projects-section .project-text h3 {
+    font-size: 22px;
+    color: #15803d; /* Dark green */
+    margin-bottom: 10px;
+}
+
+/* Paragraphs */
+.projects-section .project-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+/* List Items */
+.projects-section .project-text ul li {
+    margin-bottom: 8px;
+}
+
+/* Add subtle shadow to sections */
+.projects-section {
+    border: 1px solid #d1fae5;
+}
+
+
+ /* Tablet: 768px – 992px */
+@media (max-width: 992px) and (min-width: 768px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row tablet */
+        gap: 18px;
+    }
+}
+
+/* Mobile: <768px */
+@media (max-width: 767px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row mobile */
+        gap: 15px;
+    }
+
+    .project-card { max-width: 160px; padding: 10px; }
+    .project-card .view-btn { padding: 8px 12px; font-size: 12px; }
+}
+
+/* Extra small mobile <380px */
+@media (max-width: 380px) {
+    .projects-container { gap: 10px; }
+    .project-card { max-width: 140px; padding: 8px; }
+    .project-card .view-btn { padding: 6px 10px; font-size: 11px; }
+}
+
+/* RESPONSIVE IMAGES */
+@media(max-width: 992px){
+    .project-images img{
+        width: calc(50% - 5px);
+        max-width: 160px;
+    }
+}
+@media(max-width: 768px){
+    .project-images img{
+        width: calc(50% - 5px);
+        max-width: 140px;
+    }
+}
+@media(max-width:480px){
+    .project-images img{
+        width: calc(50% - 5px);
+        max-width: 120px;
+    }
+}
+
+
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .projects-section {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 25px;
+    }
+    .project-images img {
+        width: calc(50% - 7.5px);
+        max-width: 160px;
+    }
+}
+
+ 
+@media (min-width: 600px) and (max-width: 992px) {
+    .project-images img {
+        width: calc(33.33% - 6.66px); /* 3 per row */
+        max-width: none; /* Allow flexible width */
+    }
+}
+@media (max-width: 768px) {
+    .project-images img {
+        width: calc(50% - 5px); /* still 2 images per row */
+        max-width: 180px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .project-images img {
+        width: calc(50% - 5px); /* 2 images per row */
+        max-width: 140px;
+    }
+}
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #020617, #1e293b);
+    z-index: 1000;
+}
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+}
+nav ul li a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+nav ul li a.active,
+nav ul li a:hover {
+    color: #22c55e;
+}
+.hamburger {
+    display: none;
+    font-size: 28px;
+    color: #e5e7eb;
+    cursor: pointer;
+}
+@media(max-width:768px){
+    nav ul{
+        position:absolute;
+        top:60px;
+        left:0;
+        width:100%;
+        background:linear-gradient(135deg, #020617, #1e293b);
+        flex-direction:column;
+        display:none;
+        gap:0;
+    }
+    nav.nav-open ul{
+        display:flex;
+    }
+    nav ul li{
+        margin:12px 0;
+        text-align:center;
+    }
+    .hamburger{
+        display:block;
+    }
+}
+.source-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 22px;
+    background:linear-gradient(135deg,#111827,#374151);
+    color:#fff;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:600;
+    margin-top:10px;
+    transition:0.3s;
+}
+
+.source-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.25);
+    background:linear-gradient(135deg,#000,#1f2937);
+}/* Mobile: icon only */
+@media (max-width: 480px){
+
+    .source-btn{
+        padding:12px;
+        border-radius:50%;
+        justify-content:center;
+    }
+
+    .source-btn .btn-text{
+        display:none;
+    }
+
+    .source-btn i{
+        font-size:20px;
+    }
+}
