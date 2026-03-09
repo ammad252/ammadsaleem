@@ -1,280 +1,375 @@
-  <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Covid 19 Analysis</title>
-<link rel="stylesheet" href="covid.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
- /* PROJECT SUMMARY */
-/* Projects Page Container */
- /* =========================
-PROJECTS SLIDER / CARDS
-========================= */
-.projects-section {
-    background: linear-gradient(135deg,#f0fdfa,#d1fae5); /* Light green gradient background */
-    padding: 60px 20px;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid-19 Analysis | Ammad Saleem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #030712;
+            --bg2: #0d1117;
+            --card: rgba(255,255,255,0.04);
+            --border: rgba(255,255,255,0.08);
+            --text: #e2e8f0;
+            --text2: #94a3b8;
+            --accent: #00ff88;
+            --accent2: #0ea5e9;
+            --accent3: #a855f7;
+            --glow: 0 0 30px rgba(0,255,136,0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
+        }
 
-.projects-swiper {
-    width: 100%;
-    padding: 20px 0;
-}
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(3,7,18,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px; margin: auto;
+            display: flex; justify-content: space-between;
+            align-items: center; padding: 16px 24px;
+        }
+        .logo {
+            font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            cursor: default;
+        }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+        nav ul { list-style: none; display: flex; gap: 6px; }
+        nav ul li a {
+            display: flex; align-items: center; gap: 6px;
+            text-decoration: none; color: var(--text2);
+            font-weight: 600; font-size: 13px;
+            padding: 8px 14px; border-radius: 8px;
+            transition: all 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent); background: rgba(0,255,136,0.08);
+        }
+        nav ul li a i { font-size: 12px; }
+        .hamburger { display: none; font-size: 22px; color: var(--text); cursor: pointer; }
+        @media (max-width: 992px) {
+            nav ul {
+                position: absolute; top: 65px; left: 0;
+                width: 100%; flex-direction: column;
+                background: rgba(3,7,18,0.97);
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid var(--border);
+                display: none; padding: 12px 0; gap: 2px;
+            }
+            nav ul li a { justify-content: center; }
+            nav.nav-open ul { display: flex; }
+            .hamburger { display: block; }
+        }
 
-.swiper-wrapper {
-    display: flex;
-    align-items: flex-start;
-}
+        /* ===== PAGE WRAP ===== */
+        .page-wrap {
+            max-width: 960px; margin: auto;
+            padding: 120px 24px 80px;
+        }
 
-.swiper-slide {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-}
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            text-align: center; margin-bottom: 60px;
+            animation: fadeUp 0.7s ease forwards;
+        }
+        .section-label {
+            display: inline-block; font-size: 12px; font-weight: 700;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 12px;
+        }
+        .page-hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 48px; font-weight: 800; margin-bottom: 16px;
+        }
+        .page-hero p {
+            color: var(--text2); font-size: 15px;
+            line-height: 1.8; max-width: 680px; margin: auto;
+        }
+        .hero-tags { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        .hero-tag {
+            background: rgba(14,165,233,0.1); color: var(--accent2);
+            border: 1px solid rgba(14,165,233,0.2);
+            font-size: 12px; font-weight: 700;
+            padding: 5px 14px; border-radius: 20px;
+        }
 
-.project-card {
-    width: 280px; /* Mobile & tablet friendly */
-    background: linear-gradient(145deg,#ffffff,#e5f9f0); /* Gradient card background */
-    border-radius: 16px;
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+        /* ===== SECTION BLOCK ===== */
+        .proj-block {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px; overflow: hidden;
+            margin-bottom: 28px;
+            animation: fadeUp 0.6s ease forwards; opacity: 0;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .proj-block:nth-child(1) { animation-delay: 0.1s; }
+        .proj-block:nth-child(2) { animation-delay: 0.2s; }
+        .proj-block:nth-child(3) { animation-delay: 0.3s; }
+        .proj-block:nth-child(4) { animation-delay: 0.4s; }
+        .proj-block:nth-child(5) { animation-delay: 0.5s; }
+        .proj-block:hover {
+            border-color: rgba(0,255,136,0.2);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
+        /* Block header */
+        .block-header {
+            display: flex; align-items: center; gap: 12px;
+            padding: 22px 28px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+        }
+        .block-icon {
+            width: 40px; height: 40px; border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; color: #000; flex-shrink: 0;
+        }
+        .block-header h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 18px; font-weight: 800;
+        }
 
-.project-card .project-img {
-    width: 100%;
-    height: 180px; 
-    object-fit: cover; /* Cover the card nicely */
-    border-radius: 12px;
-    margin-bottom: 10px;
-}
+        /* Block body */
+        .block-body {
+            padding: 28px;
+            display: flex; gap: 28px; align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .block-text { flex: 1; min-width: 240px; }
+        .block-text p {
+            color: var(--text2); font-size: 14px;
+            line-height: 1.8; margin-bottom: 14px;
+        }
+        .block-text ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .block-text ul li {
+            display: flex; align-items: flex-start; gap: 10px;
+            color: var(--text2); font-size: 13px; line-height: 1.6;
+        }
+        .block-text ul li::before {
+            content: '▹'; color: var(--accent);
+            font-size: 14px; flex-shrink: 0; margin-top: 1px;
+        }
 
-.project-title {
-    font-size: 16px;
-    color: #0f172a;
-    margin-bottom: 4px;
-    font-weight: 600;
-}
+        /* Images */
+        .block-imgs {
+            display: flex; flex-direction: column; gap: 12px;
+            flex-shrink: 0;
+        }
+        .block-imgs img {
+            width: 260px; border-radius: 12px;
+            border: 1px solid var(--border);
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .block-imgs img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
 
-.project-short-desc {
-    font-size: 13px;
-    color: #334155;
-    margin-bottom: 8px;
-}
+        /* Tools chips */
+        .tool-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .tool-chip {
+            background: rgba(168,85,247,0.1); color: var(--accent3);
+            border: 1px solid rgba(168,85,247,0.2);
+            font-size: 11px; font-weight: 700;
+            padding: 4px 12px; border-radius: 20px;
+        }
 
-.view-project {
-    display: inline-block;
-    margin-top: auto;
-    background: linear-gradient(135deg,#22c55e,#16a34a);
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    text-align: center;
-    font-size: 12px;
-    transition: 0.3s;
-}
+        /* GitHub button */
+        .github-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--card); border: 1px solid var(--border);
+            color: var(--text); text-decoration: none;
+            font-weight: 700; font-size: 14px;
+            padding: 12px 22px; border-radius: 10px;
+            transition: all 0.3s; margin-top: 8px;
+        }
+        .github-btn:hover {
+            border-color: var(--accent); color: var(--accent);
+            box-shadow: var(--glow); transform: translateY(-2px);
+        }
 
-.view-project:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(135deg,#16a34a,#22c55e);
-}
+        /* FOOTER */
+        footer {
+            background: var(--bg2); border-top: 1px solid var(--border);
+            text-align: center; padding: 24px;
+            color: var(--text2); font-size: 13px;
+        }
+        footer span { color: var(--accent); }
 
-.swiper-pagination-bullet {
-    background: #22c55e;
-    opacity: 0.5;
-    margin: 0 4px !important;
-}
-.swiper-pagination-bullet-active {
-    opacity: 1;
-}
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
 
-.swiper-button-next,
-.swiper-button-prev {
-    color: #22c55e;
-    width: 32px;
-    height: 32px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 992px) {
-    .project-card { width: 220px; }
-    .project-title { font-size: 14px; }
-    .project-short-desc { font-size: 12px; }
-    .view-project { font-size: 11px; padding: 5px 8px; }
-}
-
-@media (max-width: 600px) {
-    .project-card { width: 180px; }
-    .project-title { font-size: 13px; }
-    .project-short-desc { font-size: 11px; }
-    .view-project { font-size: 10px; padding: 4px 6px; }
-}
-
-/* NAVBAR */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: linear-gradient(135deg, #020617, #1e293b);
-    z-index: 1000;
-}
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 20px;
-}
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 18px;
-}
-nav ul li a {
-    color: #e5e7eb;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-nav ul li a.active,
-nav ul li a:hover {
-    color: #22c55e;
-}
-.hamburger {
-    display: none;
-    font-size: 28px;
-    color: #e5e7eb;
-    cursor: pointer;
-}
-@media(max-width:768px){
-    nav ul{
-        position:absolute;
-        top:60px;
-        left:0;
-        width:100%;
-        background:linear-gradient(135deg, #020617, #1e293b);
-        flex-direction:column;
-        display:none;
-        gap:0;
-    }
-    nav.nav-open ul{
-        display:flex;
-    }
-    nav ul li{
-        margin:12px 0;
-        text-align:center;
-    }
-    .hamburger{
-        display:block;
-    }
-}
-</style>
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+            .page-hero h1 { font-size: 32px; }
+            .block-body { flex-direction: column; }
+            .block-imgs img { width: 100%; }
+            .block-imgs { width: 100%; }
+        }
+    </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
-<nav>
+<nav id="navbar">
     <div class="nav-container">
-        
-        <div class="hamburger"><i class="fas fa-bars"></i></div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#skills">Skills</a></li>
-            <li><a href="index.html#experience">Experience</a></li>
-            <li><a href="index.html#projects" class="active">Projects</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-        </ul>
+        <div class="logo">AS.</div>
+        <div class="nav-right">
+            <ul id="navMenu">
+                <li><a href="index.html#home"><i class="fas fa-home"></i><span>Home</span></a></li>
+                <li><a href="index.html#about"><i class="fas fa-user"></i><span>About</span></a></li>
+                <li><a href="index.html#education"><i class="fas fa-graduation-cap"></i><span>Education</span></a></li>
+                <li><a href="index.html#skills"><i class="fas fa-tools"></i><span>Skills</span></a></li>
+                <li><a href="index.html#experience"><i class="fas fa-briefcase"></i><span>Experience</span></a></li>
+                <li><a href="index.html#projects" class="active"><i class="fas fa-folder-open"></i><span>Projects</span></a></li>
+                <li><a href="index.html#contact"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
     </div>
 </nav>
 
-<!-- PROJECTS CONTENT -->
-<section class="projects-page">
-    <div class="projects-container">
-        <h1 class="section-title">Covid 19 Analysis</h1>
+<!-- PAGE -->
+<div class="page-wrap">
 
-        <!-- PROJECT SUMMARY -->
-        <div class="project-summary">
-     This project is focused on analyzing COVID-19 data for Pakistan, and comparing it with India in terms of deaths and recoveries. In addition to country-specific comparisons, the project also highlights the Top 10 countries most affected by COVID-19 in terms of deaths and recoveries. The purpose of this analysis is to better understand how Pakistan has been impacted compared to other countries, and to visually represent these trends using charts.  </div>
-
+    <!-- HERO -->
+    <div class="page-hero">
+        <span class="section-label">Data Analysis Project</span>
+        <h1>Covid-19 Analysis</h1>
+        <p>Analyzing COVID-19 data for Pakistan and comparing it with India in terms of deaths and recoveries. Also highlights the Top 10 most affected countries worldwide using Python visualizations.</p>
         
- <div class="projects-section">
-            <div class="project-text">
-                <h3>Tools & Technologies</h3>
-                 <p>Python Pandas – data cleaning & manipulation Matplotlib – data visualization NumPy – numerical operations</p>
-            </div>
-            <div class="project-images">
-                <img src="img/img2.png" >
-                  <img src="img/img1.png" >
+    </div>
+
+    <!-- BLOCK 1: Overview -->
+    <div class="proj-block">
+        <div class="block-header">
+            <div class="block-icon"><i class="fas fa-info-circle"></i></div>
+            <h3>Project Overview</h3>
+        </div>
+        <div class="block-body">
+            <div class="block-text">
+                <p>This project is focused on analyzing COVID-19 data for Pakistan, and comparing it with India in terms of deaths and recoveries. The purpose of this analysis is to better understand how Pakistan has been impacted compared to other countries, and to visually represent these trends using charts.</p>
+                <p>In addition to country-specific comparisons, the project also highlights the Top 10 countries most affected by COVID-19 in terms of deaths and recoveries.</p>
             </div>
         </div>
+    </div>
 
-        <!-- LOGIN/SIGNUP -->
-        <div class="projects-section">
-            <div class="project-text">
-                <h3>Features of Analysis</h3>
-                <p> Pakistan-focused analysis of confirmed cases, deaths, and recoveries. Comparison between Pakistan and India for: Total deaths Total recoveries Top 10 countries analysis based on: Highest deaths Highest recoveries Visualization through bar charts for easy interpretation.</p>  <ul>
-                    <li>After registration, the account remains pending until admin approval.</li>
+    <!-- BLOCK 2: Tools -->
+    <div class="proj-block">
+        <div class="block-header">
+            <div class="block-icon"><i class="fas fa-tools"></i></div>
+            <h3>Tools & Technologies</h3>
+        </div>
+        <div class="block-body">
+            <div class="block-text">
+                <ul>
+                    <li>Python — core programming language</li>
+                    <li>Pandas — data cleaning & manipulation</li>
+                    <li>Matplotlib — data visualization & charts</li>
+                    <li>NumPy — numerical operations</li>
+                </ul>
+           
+            </div>
+            <div class="block-imgs">
+                <img src="img/img2.png" alt="Tools">
+                <img src="img/img1.png" alt="Data">
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOCK 3: Features -->
+    <div class="proj-block">
+        <div class="block-header">
+            <div class="block-icon"><i class="fas fa-chart-bar"></i></div>
+            <h3>Features of Analysis</h3>
+        </div>
+        <div class="block-body">
+            <div class="block-text">
+                <ul>
+                    <li>Pakistan-focused analysis of confirmed cases, deaths, and recoveries</li>
+                    <li>Comparison between Pakistan and India for total deaths</li>
+                    <li>Comparison between Pakistan and India for total recoveries</li>
+                    <li>Top 10 countries with the highest deaths</li>
+                    <li>Top 10 countries with the highest recoveries</li>
+                    <li>Visualization through bar charts for easy interpretation</li>
                 </ul>
             </div>
-            <div class="project-images">
-                <img src="img/img3.png" >
-                 
+            <div class="block-imgs">
+                <img src="img/img3.png" alt="Features">
             </div>
         </div>
-
-        <!-- USER DASHBOARD -->
-        <div class="projects-section">
-            <div class="project-text">
-                <h3>Sample Visualizations</h3>
-                <p>Pakistan’s data (confirmed, deaths, recovered). Pakistan vs India comparison (deaths & recoveries). Top 10 countries with the highest deaths. Top 10 countries with the highest recoveries.</p>
-                
-            </div>
-            <div class="project-images">
-                <img src="img/img4.png"  >
-                <img src="img/img5.png"  >
-           
-                 
-        </div>
-  <div class="projects-section">
-    <div class="project-text">
-        <h3>Source Code</h3>
-
-        <a href="https://github.com/ammad252/FoodApp"
-           target="_blank"
-           class="source-btn">
-           <i class="fab fa-github"></i> View on GitHub
-        </a>
-
     </div>
+
+    <!-- BLOCK 4: Visualizations -->
+    <div class="proj-block">
+        <div class="block-header">
+            <div class="block-icon"><i class="fas fa-chart-pie"></i></div>
+            <h3>Sample Visualizations</h3>
+        </div>
+        <div class="block-body">
+            <div class="block-text">
+                <ul>
+                    <li>Pakistan's data — confirmed, deaths, recovered</li>
+                    <li>Pakistan vs India comparison — deaths & recoveries</li>
+                    <li>Top 10 countries with the highest deaths</li>
+                    <li>Top 10 countries with the highest recoveries</li>
+                </ul>
+            </div>
+            <div class="block-imgs">
+                <img src="img/img4.png" alt="Chart 1">
+                <img src="img/img5.png" alt="Chart 2">
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOCK 5: Source Code -->
+    <div class="proj-block">
+        <div class="block-header">
+            <div class="block-icon"><i class="fab fa-github"></i></div>
+            <h3>Source Code</h3>
+        </div>
+        <div class="block-body">
+            <div class="block-text">
+                <p>Full source code available on GitHub.</p>
+                <a href="https://github.com/ammad252" target="_blank" class="github-btn">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-        <a href="index.html" class="btn back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
-    </div>
-</section>
-
 <!-- FOOTER -->
-<!-- <footer>
-    © 2026 Ammad Saleem
-</footer> -->
+<footer>
+    © 2026 <span>Ammad Saleem</span> — Built with passion 🚀
+</footer>
 
 <script>
-const hamburger = document.querySelector('.hamburger');
-const nav = document.querySelector('nav');
-hamburger.addEventListener('click', () => {
-    nav.classList.toggle('nav-open');
-});
+    const hamburger = document.getElementById('hamburger');
+    const navbar = document.getElementById('navbar');
+    hamburger.addEventListener('click', () => navbar.classList.toggle('nav-open'));
+    document.querySelectorAll('nav ul li a').forEach(l => {
+        l.addEventListener('click', () => navbar.classList.remove('nav-open'));
+    });
 </script>
 
 </body>

@@ -1,188 +1,275 @@
- <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience - Android App Developer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Experience | Ammad Saleem</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <style>
-        /* =====================
-           EXPERIENCE PAGE STYLING
-        ====================== */
-        /* Page Background */
-.experience-page {
-    padding: 120px 20px;
-    background: linear-gradient(to bottom right, #f0fdfa, #d1fae5); /* Light green gradient */
-    min-height: 100vh;
-    font-family: 'Poppins', sans-serif;
-    color: #1f2937;
-}
+        :root {
+            --bg: #030712;
+            --bg2: #0d1117;
+            --card: rgba(255,255,255,0.04);
+            --border: rgba(255,255,255,0.08);
+            --text: #e2e8f0;
+            --text2: #94a3b8;
+            --accent: #00ff88;
+            --accent2: #0ea5e9;
+            --accent3: #a855f7;
+            --glow: 0 0 30px rgba(0,255,136,0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
+        }
 
-/* Container */
-.experience-container {
-    max-width: 1000px;
-    margin: auto;
-}
+        /* NAVBAR - same as index.html */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(3,7,18,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px; margin: auto;
+            display: flex; justify-content: space-between;
+            align-items: center; padding: 16px 24px;
+        }
+        .logo {
+            font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none; cursor: default;
+        }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+        nav ul { list-style: none; display: flex; gap: 6px; }
+        nav ul li a {
+            display: flex; align-items: center; gap: 6px;
+            text-decoration: none; color: var(--text2);
+            font-weight: 600; font-size: 13px;
+            padding: 8px 14px; border-radius: 8px;
+            transition: all 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent); background: rgba(0,255,136,0.08);
+        }
+        nav ul li a i { font-size: 12px; }
+        .hamburger { display: none; font-size: 22px; color: var(--text); cursor: pointer; }
+        @media (max-width: 992px) {
+            nav ul {
+                position: absolute; top: 65px; left: 0;
+                width: 100%; flex-direction: column;
+                background: rgba(3,7,18,0.97);
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid var(--border);
+                display: none; padding: 12px 0; gap: 2px;
+            }
+            nav ul li a { justify-content: center; }
+            nav.nav-open ul { display: flex; }
+            .hamburger { display: block; }
+            .nav-right { gap: 8px; }
+        }
 
-/* Section Title */
-.section-title {
-    text-align: center;
-    font-size: 36px;
-    color: #15803d; /* Dark green */
-    margin-bottom: 40px;
-}
+        /* PAGE */
+        .page-wrap {
+            max-width: 900px; margin: auto;
+            padding: 120px 24px 80px;
+        }
+        .section-label {
+            display: inline-block; font-size: 12px; font-weight: 700;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 44px; font-weight: 800;
+            margin-bottom: 8px; color: var(--text);
+        }
+        .section-sub { color: var(--text2); font-size: 16px; margin-bottom: 50px; }
 
-/* Content Flex */
-.experience-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 40px;
-    margin-top: 20px;
-    background: linear-gradient(145deg, #ffffff, #e0f7f1); /* Card look */
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.experience-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-}
+        /* EXP CARD */
+        .exp-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px; padding: 36px;
+            display: flex; gap: 28px; align-items: flex-start;
+            transition: all 0.4s; position: relative; overflow: hidden;
+            margin-bottom: 24px;
+            animation: fadeUp 0.6s ease forwards; opacity: 0;
+        }
+        .exp-card:nth-child(1) { animation-delay: 0.1s; }
+        .exp-card:nth-child(2) { animation-delay: 0.25s; }
 
-/* Images */
-.experience-img {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    flex-shrink: 0;
-}
-.experience-img img {
-    width: 100%;
-    max-width: 200px;
-    border-radius: 16px;
-    border: 3px solid #22c55e; /* Green border */
-    object-fit: cover;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.experience-img img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .exp-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(0,255,136,0.03), transparent);
+            opacity: 0; transition: opacity 0.4s;
+        }
+        .exp-card:hover::after { opacity: 1; }
+        .exp-card:hover {
+            border-color: rgba(0,255,136,0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
 
-/* Text */
-.experience-text {
-    flex: 1;
-}
-.experience-text p {
-    font-size: 17px;
-    line-height: 1.7;
-    margin-bottom: 15px;
-}
-.experience-list li {
-    margin-bottom: 10px;
-    font-size: 16px;
-    line-height: 1.6;
-}
+        /* Images grid inside card */
+        .exp-imgs {
+            display: flex; flex-direction: column; gap: 12px;
+            flex-shrink: 0;
+        }
+        .exp-imgs img {
+            width: 180px; height: 180px;
+            border-radius: 14px; object-fit: cover;
+            border: 1px solid var(--border);
+            transition: transform 0.3s;
+        }
+        .exp-imgs img:hover { transform: scale(1.05); }
 
-/* Back Button */
-.back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 25px;
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-    color: #fff;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    margin-top: 20px;
-    transition: all 0.3s;
-}
-.back-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    background: linear-gradient(135deg, #16a34a, #22c55e);
-}
+        .exp-body { flex: 1; }
+        .exp-body h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px; font-weight: 800; margin-bottom: 6px;
+        }
+        .exp-meta { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 14px; }
+        .exp-body p { color: var(--text2); font-size: 14px; line-height: 1.7; margin-bottom: 16px; }
 
-/* Responsive */
-@media (max-width: 992px) {
-    .experience-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 25px;
-        padding: 25px;
-    }
-    .experience-img img {
-        max-width: 180px;
-    }
-}
-@media (max-width: 600px) {
-    .experience-img img {
-        max-width: 140px;
-    }
-}
+        .resp-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+        .resp-list li {
+            display: flex; align-items: flex-start; gap: 10px;
+            color: var(--text2); font-size: 13px; line-height: 1.6;
+        }
+        .resp-list li::before {
+            content: '▹'; color: var(--accent);
+            font-size: 15px; flex-shrink: 0; margin-top: 1px;
+        }
 
+        .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-chip {
+            background: rgba(168,85,247,0.1); color: var(--accent3);
+            border: 1px solid rgba(168,85,247,0.2);
+            font-size: 11px; font-weight: 700;
+            padding: 4px 12px; border-radius: 20px;
+        }
+
+        footer {
+            background: var(--bg2); border-top: 1px solid var(--border);
+            text-align: center; padding: 24px;
+            color: var(--text2); font-size: 13px;
+        }
+        footer span { color: var(--accent); }
+
+        @media (max-width: 600px) {
+            .exp-card { flex-direction: column; padding: 20px; }
+            .exp-imgs { flex-direction: row; }
+            .exp-imgs img { width: 90px; height: 90px; }
+            .section-title { font-size: 30px; }
+        }
     </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
-<nav>
+<nav id="navbar">
     <div class="nav-container">
-    
-        <div class="hamburger"><i class="fas fa-bars"></i></div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#skills">Skills</a></li>
-            <li><a href="index.html#experience" class="active">Experience</a></li>
-            <li><a href="index.html#projects">Projects</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-        </ul>
+        <div class="logo">AS.</div>
+        <div class="nav-right">
+            <ul id="navMenu">
+                <li><a href="index.html#home"><i class="fas fa-home"></i><span>Home</span></a></li>
+                <li><a href="index.html#about"><i class="fas fa-user"></i><span>About</span></a></li>
+                <li><a href="index.html#education"><i class="fas fa-graduation-cap"></i><span>Education</span></a></li>
+                <li><a href="index.html#skills"><i class="fas fa-tools"></i><span>Skills</span></a></li>
+                <li><a href="index.html#experience" class="active"><i class="fas fa-briefcase"></i><span>Experience</span></a></li>
+                <li><a href="index.html#projects"><i class="fas fa-folder-open"></i><span>Projects</span></a></li>
+                <li><a href="index.html#contact"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
     </div>
 </nav>
 
-<!-- EXPERIENCE CONTENT -->
-<section class="experience-page">
-    <div class="container experience-container">
-        <h1 class="section-title">Android App Developer</h1>
+<!-- CONTENT -->
+<div class="page-wrap">
 
-        <div class="experience-content">
-            <div class="experience-img">
-                <img src="img/food1 (3).png" alt="Experience 1">
-                <img src="img/food1 (2).png" alt="Experience 2">
-            </div>
-            <div class="experience-text">
-                <p>Worked remotely Android Studio Java:</p>
-                <ul class="experience-list">
-                    <li> During my remote freelance contract, I
-worked on Android XML UI design, where
-my responsibilities included modifying and
-enhancing existing layouts. I implemented
-UI changes such as replacing buttons with
-radio buttons, updating button styles, and
-adjusting colors to match client
-requirements.</li>
-                </ul>
-                <a href="index.html" class="btn back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <span class="section-label">Work History</span>
+    <h1 class="section-title">Experience</h1>
+    <p class="section-sub">Real-world projects and skills applied</p>
+
+    <!-- Card 1: Android -->
+    <div class="exp-card">
+        <div class="exp-imgs">
+            <img src="img/food1 (3).png" alt="App Screen 1" onerror="this.style.display='none'">
+            <img src="img/food1 (2).png" alt="App Screen 2" onerror="this.style.display='none'">
+        </div>
+        <div class="exp-body">
+            <h3>Android App Developer</h3>
+            <div class="exp-meta"><i class="fas fa-circle" style="font-size:7px"></i> &nbsp; Mobile Development · Freelance</div>
+            <p>Worked remotely on Android Studio using Java. Focused on UI design and implementation of client requirements.</p>
+            <ul class="resp-list">
+                <li>Worked on Android XML UI design, modifying and enhancing existing layouts</li>
+                <li>Replaced buttons with radio buttons and updated button styles as per client needs</li>
+                <li>Adjusted colors and UI elements to match client requirements</li>
+                <li>Integrated Firebase Realtime Database for live data syncing</li>
+                <li>Implemented Firebase Authentication for secure login and registration</li>
+                <li>Tested and debugged across multiple Android versions and screen sizes</li>
+            </ul>
+            <div class="skill-chips">
+                <span class="skill-chip">Java</span>
+                <span class="skill-chip">Android Studio</span>
+                <span class="skill-chip">XML</span>
+                <span class="skill-chip">Firebase</span>
+                <span class="skill-chip">REST API</span>
+                <span class="skill-chip">Git</span>
             </div>
         </div>
     </div>
-</section>
 
-<!-- FOOTER -->
+    <!-- Card 2: AI & Data -->
+    <div class="exp-card">
+        <div class="exp-imgs">
+            <img src="img/food2.png" alt="Project" onerror="this.style.display='none'">
+        </div>
+        <div class="exp-body">
+            <h3>AI & Data Analysis</h3>
+            <div class="exp-meta"><i class="fas fa-circle" style="font-size:7px"></i> &nbsp; Academic & Personal Projects</div>
+            <p>Applied data science techniques to real-world datasets for analysis, visualization and predictive modeling.</p>
+            <ul class="resp-list">
+                <li>Analyzed COVID-19 datasets comparing Pakistan vs India using Pandas</li>
+                <li>Visualized top 10 most affected countries with Matplotlib charts</li>
+                <li>Built Smart AI Diet Consultant for weight loss, gain and healthy living goals</li>
+                <li>Trained ML models and evaluated performance using standard metrics</li>
+            </ul>
+            <div class="skill-chips">
+                <span class="skill-chip">Python</span>
+                <span class="skill-chip">Pandas</span>
+                <span class="skill-chip">NumPy</span>
+                <span class="skill-chip">Matplotlib</span>
+                <span class="skill-chip">Scikit-learn</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 <footer>
-    © 2026 Ammad Saleem
+    © 2026 <span>Ammad Saleem</span> — Built with passion 🚀
 </footer>
 
 <script>
-    // Mobile hamburger toggle
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('nav');
-    hamburger.addEventListener('click', () => {
-        nav.classList.toggle('nav-open');
+    const hamburger = document.getElementById('hamburger');
+    const navbar = document.getElementById('navbar');
+    hamburger.addEventListener('click', () => navbar.classList.toggle('nav-open'));
+    document.querySelectorAll('nav ul li a').forEach(l => {
+        l.addEventListener('click', () => navbar.classList.remove('nav-open'));
     });
 </script>
 </body>
