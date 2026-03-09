@@ -1,5 +1,69 @@
  // Navbar active link on scroll
  
+ const hello = document.getElementById("hello");
+const iam = document.getElementById("iam");
+const typing = document.getElementById("typing");
+
+const roles = [
+"Full Stack Developer",
+"Data Analyst",
+"Machine Learning"
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+
+/* Typing Roles */
+function typeRoles(){
+
+if(charIndex < roles[roleIndex].length){
+
+typing.textContent += roles[roleIndex].charAt(charIndex);
+charIndex++;
+
+setTimeout(typeRoles,80);
+
+}else{
+
+setTimeout(()=>{
+
+typing.textContent="";
+charIndex=0;
+roleIndex++;
+
+if(roleIndex >= roles.length){
+roleIndex=0;
+}
+
+typeRoles();
+
+},1500);
+
+}
+
+}
+
+/* Main Animation Flow */
+
+setTimeout(()=>{
+
+hello.textContent="Hello 👋";
+hello.classList.add("showText");
+
+setTimeout(()=>{
+
+iam.textContent="I am Ammad Saleem";
+iam.classList.add("showText");
+
+setTimeout(()=>{
+
+typeRoles();
+
+},1000);
+
+},1000);
+
+},500);
 const sections = document.querySelectorAll("section");
 
 window.addEventListener("scroll", () => {
