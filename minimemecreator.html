@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Meme Creator | Ammad Saleem</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --green:#00cc6a;--green2:#00b85e;
+  --green-dim:rgba(0,204,106,0.08);
+  --bg:#050a0e;--bg2:#0a1018;--bg3:#0f1822;
+  --surface:rgba(255,255,255,0.04);--surface2:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.08);--border-green:rgba(0,204,106,0.3);
+  --text:#e8f0e8;--text-muted:rgba(232,240,232,0.5);--text-dim:rgba(232,240,232,0.3);
+  --orb1:rgba(0,204,106,0.06);--orb2:rgba(0,180,90,0.04);
+  --grid:rgba(0,204,106,0.03);
+  --nav-bg:rgba(5,10,14,0.9);
+  --phone-bg:#0f1822;
+  --transition:background 0.4s,color 0.4s,border-color 0.4s;
+}
+body.light{
+  --bg:#f0f4f0;--bg2:#e6ede8;--bg3:#dce6df;
+  --surface:rgba(0,0,0,0.04);--surface2:rgba(0,0,0,0.07);
+  --border:rgba(0,0,0,0.1);--border-green:rgba(0,150,70,0.3);
+  --text:#0a1a0f;--text-muted:rgba(10,26,15,0.55);--text-dim:rgba(10,26,15,0.3);
+  --orb1:rgba(0,180,90,0.08);--orb2:rgba(0,150,70,0.05);
+  --grid:rgba(0,150,70,0.05);
+  --nav-bg:rgba(240,244,240,0.92);
+  --phone-bg:#dce6df;
+  --green:#008a44;--green2:#007a3c;
+  --green-dim:rgba(0,138,68,0.08);
+  --border-green:rgba(0,138,68,0.3);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;transition:background 0.4s,color 0.4s;}
+
+/* GRID BG */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:0;
+}
+
+/* ORBS */
+.orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;transition:background 0.4s;}
+.orb1{width:500px;height:500px;background:var(--orb1);top:-150px;right:-100px;}
+.orb2{width:400px;height:400px;background:var(--orb2);bottom:10%;left:-150px;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 5%;height:70px;
+  background:var(--nav-bg);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:background 0.4s,border-color 0.4s;
+}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--green);letter-spacing:-0.02em;text-decoration:none;}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.88rem;font-weight:500;letter-spacing:0.02em;transition:color 0.2s;white-space:nowrap;}
+.nav-links a:hover,.nav-links a.active{color:var(--green);}
+
+/* THEME TOGGLE */
+.theme-toggle{
+  width:40px;height:40px;
+  border-radius:50%;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  color:var(--text);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+  transition:background 0.3s,border-color 0.3s,transform 0.2s;
+  flex-shrink:0;
+}
+.theme-toggle:hover{background:var(--border-green);border-color:var(--green);transform:rotate(20deg) scale(1.08);}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;z-index:1100;background:none;border:none;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* MOBILE MENU */
+.mobile-menu{
+  display:none;position:fixed;top:70px;left:0;right:0;
+  background:var(--nav-bg);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);z-index:999;
+  flex-direction:column;padding:1rem 5%;gap:0;
+  transition:background 0.4s;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--text-muted);text-decoration:none;font-size:1rem;font-weight:500;padding:1rem 0;border-bottom:1px solid var(--border);transition:color 0.2s;}
+.mobile-menu a:last-child{border-bottom:none;}
+.mobile-menu a:hover,.mobile-menu a.active-m{color:var(--green);}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:120px 5% 80px;position:relative;z-index:1;
+}
+
+/* BADGES */
+.badge-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:2.5rem;opacity:0;transform:translateY(20px);animation:fadeUp 0.7s 0.2s forwards;}
+.badge{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;border-radius:999px;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:1px solid;}
+.badge-android{background:rgba(0,255,136,0.08);border-color:rgba(0,255,136,0.25);color:var(--green);}
+.badge-java{background:rgba(100,180,255,0.08);border-color:rgba(100,180,255,0.25);color:#64b4ff;}
+.badge-meme{background:rgba(255,170,100,0.08);border-color:rgba(255,170,100,0.25);color:#ffaa64;}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:currentColor;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+
+/* HERO TITLE */
+.hero-title{font-family:'Syne',sans-serif;font-size:clamp(3.5rem,11vw,8rem);font-weight:800;line-height:0.92;letter-spacing:-0.04em;margin-bottom:2rem;opacity:0;transform:translateY(30px);animation:fadeUp 0.8s 0.4s forwards;}
+.hero-title .line1{display:block;color:var(--text);}
+.hero-title .line2{display:block;color:var(--green);}
+
+.hero-desc{font-size:clamp(0.9rem,2vw,1.1rem);color:var(--text-muted);max-width:540px;font-weight:300;line-height:1.8;margin-bottom:2.5rem;opacity:0;transform:translateY(20px);animation:fadeUp 0.8s 0.6s forwards;}
+
+.hero-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:3.5rem;opacity:0;transform:translateY(20px);animation:fadeUp 0.8s 0.8s forwards;}
+
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:10px;font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;text-decoration:none;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s,background 0.2s;}
+.btn:hover{transform:translateY(-2px);}
+.btn-dark{background:var(--surface2);color:var(--text);border:1px solid var(--border);}
+.btn-dark:hover{background:rgba(255,255,255,0.1);box-shadow:0 8px 30px rgba(0,0,0,0.3);}
+
+/* TECH STRIP */
+.tech-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;opacity:0;animation:fadeUp 0.8s 1s forwards;}
+.tech-chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:8px 18px;font-size:0.82rem;color:var(--text-muted);font-weight:500;transition:border-color 0.2s,color 0.2s;}
+.tech-chip:hover{border-color:var(--border-green);color:var(--green);}
+
+/* SCROLL HINT */
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--text-dim);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;animation:fadeIn 1s 1.5s both;}
+.scroll-arrow{width:18px;height:18px;border-right:1.5px solid var(--text-dim);border-bottom:1.5px solid var(--text-dim);transform:rotate(45deg);animation:bounce 2s infinite;}
+@keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(5px);}}
+
+/* SECTIONS */
+section{position:relative;z-index:1;padding:5rem 5%;}
+.section-label{display:flex;align-items:center;gap:12px;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:1rem;}
+.section-label::before{content:'';width:28px;height:1.5px;background:var(--green);}
+h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15;margin-bottom:0.75rem;}
+.section-sub{color:var(--text-muted);font-size:0.95rem;font-weight:300;max-width:480px;margin-bottom:3rem;}
+
+/* OVERVIEW */
+.overview-section{background:var(--bg2);}
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.overview-text p{color:var(--text-muted);font-size:0.95rem;line-height:1.85;font-weight:300;margin-bottom:1rem;}
+
+/* PHONE */
+.phone-wrap{display:flex;justify-content:center;align-items:center;}
+.phone{width:220px;height:430px;background:var(--phone-bg);border-radius:36px;border:1.5px solid rgba(0,204,106,0.2);position:relative;overflow:hidden;box-shadow:0 0 60px rgba(0,204,106,0.08),0 30px 80px rgba(0,0,0,0.6);animation:floatY 4s ease-in-out infinite;transition:background 0.4s;}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.phone-notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:60px;height:18px;background:var(--bg);border-radius:10px;z-index:5;}
+.phone-screen{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px;gap:12px;}
+.phone-app-icon{font-size:3rem;line-height:1;}
+.phone-appname{font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:700;color:var(--green);text-align:center;}
+.phone-meme-box{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:10px;text-align:center;}
+.phone-img{width:100%;height:80px;background:linear-gradient(135deg,rgba(0,255,136,0.08),rgba(0,100,60,0.15));border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:7px;border:1px solid rgba(0,255,136,0.1);}
+.phone-meme-txt{font-size:0.6rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.06em;}
+.phone-row{display:flex;gap:6px;width:100%;}
+.phone-pb{flex:1;background:var(--green);color:#050a0e;font-size:0.55rem;font-weight:700;padding:7px 4px;border-radius:7px;text-align:center;text-transform:uppercase;letter-spacing:0.04em;}
+.phone-pb.out{background:transparent;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.5);}
+.phone-glow{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);width:120px;height:60px;background:rgba(0,255,136,0.15);filter:blur(20px);border-radius:50%;}
+
+/* FEATURES */
+.features-section{background:var(--bg);}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.feat-card{background:var(--bg);padding:2rem 1.8rem;transition:background 0.25s;position:relative;overflow:hidden;}
+.feat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--green-dim),transparent);opacity:0;transition:opacity 0.3s;}
+.feat-card:hover{background:var(--bg3);}
+.feat-card:hover::before{opacity:1;}
+.feat-icon{font-size:1.6rem;margin-bottom:1rem;display:block;position:relative;z-index:1;}
+.feat-title{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.5rem;position:relative;z-index:1;}
+.feat-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.65;font-weight:300;position:relative;z-index:1;}
+
+/* FLOW */
+.flow-section{background:var(--bg2);}
+.flow-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.flow-steps{display:flex;flex-direction:column;gap:0;position:relative;}
+.flow-steps::before{content:'';position:absolute;left:17px;top:18px;bottom:18px;width:2px;background:linear-gradient(to bottom,var(--green),transparent);}
+.flow-step{display:flex;gap:20px;padding:1.3rem 0;align-items:flex-start;}
+.step-num{width:36px;height:36px;min-width:36px;background:var(--green);color:#050a0e;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.85rem;position:relative;z-index:1;box-shadow:0 0 20px rgba(0,255,136,0.3);}
+.step-title{font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:3px;}
+.step-desc{font-size:0.8rem;color:var(--text-muted);font-weight:300;line-height:1.6;}
+
+/* SCREENS */
+.screens-section{background:var(--bg);}
+.screens-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.screen-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.8rem 1rem;text-align:center;transition:transform 0.25s,border-color 0.25s,background 0.25s;cursor:default;}
+.screen-card:hover{transform:translateY(-6px);border-color:var(--border-green);background:var(--bg3);}
+.screen-icon{font-size:2rem;display:block;margin-bottom:0.8rem;}
+.screen-name{font-family:'Syne',sans-serif;font-size:0.78rem;font-weight:700;color:rgba(232,240,232,0.8);}
+
+/* TECH */
+.tech-section{background:var(--bg2);}
+.tech-pills{display:flex;flex-wrap:wrap;gap:12px;}
+.tech-pill{display:inline-flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:11px 22px;font-size:0.88rem;font-weight:500;color:var(--text-muted);transition:border-color 0.2s,color 0.2s,transform 0.2s;}
+.tech-pill:hover{border-color:var(--border-green);color:var(--green);transform:translateY(-2px);}
+
+/* FUTURE */
+.future-section{background:var(--bg);}
+.future-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;}
+.future-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:14px;font-size:0.88rem;color:var(--text-muted);transition:border-color 0.2s,color 0.2s,background 0.2s;}
+.future-item:hover{border-color:var(--border-green);color:var(--text);background:var(--bg3);}
+.future-dot{width:8px;height:8px;min-width:8px;border-radius:50%;background:var(--green);opacity:0.5;}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;position:relative;z-index:1;}
+.footer-left{display:flex;align-items:center;gap:16px;}
+.footer-avatar{width:50px;height:50px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#050a0e;flex-shrink:0;}
+.footer-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:3px;}
+.footer-role{font-size:0.8rem;color:var(--text-muted);font-weight:300;}
+.footer-right{font-size:0.78rem;color:var(--text-dim);text-align:right;line-height:1.8;}
+.footer-right strong{color:var(--green);font-weight:500;}
+
+.divider{height:1px;background:var(--border);margin:0 5%;position:relative;z-index:1;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{to{opacity:1;}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}.d4{transition-delay:0.4s;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .overview-grid,.flow-wrap{grid-template-columns:1fr;}
+  .phone-wrap{order:-1;}
+  .screens-grid{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:600px){
+  .hero{padding:100px 5% 60px;}
+  .hero-title{font-size:clamp(2.8rem,13vw,5rem);}
+  .screens-grid{grid-template-columns:repeat(2,1fr);}
+  .feat-grid{grid-template-columns:1fr;}
+  footer{flex-direction:column;align-items:flex-start;}
+  .footer-right{text-align:left;}
+  .phone{width:180px;height:360px;}
+  section{padding:3.5rem 5%;}
+}
+@media(max-width:380px){
+  .hero-title{font-size:2.5rem;}
+  .badge-row{gap:7px;}
+  .badge{font-size:0.68rem;padding:6px 12px;}
+}
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">AS.</a>
+  <ul class="nav-links">
+  <li><a href="index.html#home">Home</a></li>
+  <li><a href="index.html#about">About</a></li>
+  <li><a href="index.html#skills">Skills</a></li>
+  <li><a href="index.html#experience">Experience</a></li>
+  <li><a href="index.html#projects" class="active">Projects</a></li>
+  <li><a href="index.html#contact">Contact</a></li>
+</ul>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#home" onclick="closeMenu()">Home</a>
+  <a href="index.html#about" onclick="closeMenu()">About</a>
+  <a href="index.html#skills" onclick="closeMenu()">Skills</a>
+  <a href="index.html#experience" onclick="closeMenu()">Experience</a>
+  <a href="index.html#projects" onclick="closeMenu()" class="active-m">Projects</a>
+  <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge-row">
+    <span class="badge badge-android"><span class="badge-dot"></span>Android App</span>
+    <span class="badge badge-java">☕ Java</span>
+    <span class="badge badge-meme">🎭 Meme Maker</span>
+  </div>
+
+  <h1 class="hero-title">
+    <span class="line1">Mini Meme</span>
+    <span class="line2">Creator</span>
+  </h1>
+
+  <p class="hero-desc">
+    A simple, fast, and user-friendly Android app for creating memes in seconds — no complicated tools, no steep learning curve. Just open, pick, type, and share.
+  </p>
+
+  <div class="hero-btns">
+    <a href="#" class="btn btn-dark">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      View on GitHub
+    </a>
+    <a href="#" class="btn btn-dark">← Back to Portfolio</a>
+  </div>
+
+  <div class="tech-strip">
+    <div class="tech-chip">🤖 Android Studio</div>
+    <div class="tech-chip">☕ Java</div>
+    <div class="tech-chip">📐 XML</div>
+    <div class="tech-chip">🖼️ ImageView</div>
+    <div class="tech-chip">🎨 Material Design</div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- OVERVIEW -->
+<section class="overview-section" id="overview">
+  <div class="overview-grid">
+    <div class="overview-text">
+      <div class="section-label reveal">Overview</div>
+      <h2 class="reveal d1">What is<br>Mini Meme Creator?</h2>
+      <p class="reveal d2">Mini Meme Creator is built for users who want a fast and simple meme-making experience. The app is lightweight, easy to use, and helps users create memes quickly without any unnecessary complexity.</p>
+      <p class="reveal d3">The app includes a modern splash screen, onboarding screens, a clean dashboard, built-in meme templates, and full customization options — all wrapped in a smooth Material Design interface with Light &amp; Dark mode support.</p>
+    </div>
+    <div class="phone-wrap reveal d2">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-app-icon">🎭</div>
+          <div class="phone-appname">Mini Meme Creator</div>
+          <div class="phone-meme-box">
+            <div class="phone-img">😂</div>
+            <div class="phone-meme-txt">Add your text here</div>
+          </div>
+          <div class="phone-row">
+            <div class="phone-pb">💾 Save</div>
+            <div class="phone-pb out">📁 Upload</div>
+          </div>
+        </div>
+        <div class="phone-glow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="section-label reveal">Features</div>
+  <h2 class="reveal d1">Everything you need<br>to meme instantly.</h2>
+  <p class="section-sub reveal d2">Packed with all the essentials — no bloat, no unnecessary complexity.</p>
+  <div class="feat-grid reveal d3">
+    <div class="feat-card"><span class="feat-icon">✨</span><div class="feat-title">Splash Screen</div><div class="feat-desc">A polished, branded splash screen greets users every time the app launches.</div></div>
+    <div class="feat-card"><span class="feat-icon">🧭</span><div class="feat-title">Onboarding</div><div class="feat-desc">Smooth onboarding walks new users through all core features before they dive in.</div></div>
+    <div class="feat-card"><span class="feat-icon">🏠</span><div class="feat-title">Clean Dashboard</div><div class="feat-desc">A modern, minimal dashboard giving users instant access to templates and tools.</div></div>
+    <div class="feat-card"><span class="feat-icon">🖼️</span><div class="feat-title">Meme Templates</div><div class="feat-desc">Built-in default meme templates let users start creating without uploading anything.</div></div>
+    <div class="feat-card"><span class="feat-icon">📁</span><div class="feat-title">Custom Images</div><div class="feat-desc">Upload any image from your gallery and turn it into a meme in seconds.</div></div>
+    <div class="feat-card"><span class="feat-icon">✏️</span><div class="feat-title">Text Customization</div><div class="feat-desc">Add, resize, and style text with full control over size, position, and appearance.</div></div>
+    <div class="feat-card"><span class="feat-icon">💾</span><div class="feat-title">Save to Gallery</div><div class="feat-desc">One-tap export saves your finished meme directly to the device gallery.</div></div>
+    <div class="feat-card"><span class="feat-icon">⚙️</span><div class="feat-title">Light &amp; Dark Mode</div><div class="feat-desc">Full theme support for a comfortable experience at any time of day.</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- APP FLOW -->
+<section class="flow-section" id="flow">
+  <div class="flow-wrap">
+    <div>
+      <div class="section-label reveal">App Flow</div>
+      <h2 class="reveal d1">How the app works</h2>
+      <p class="section-sub reveal d2">A clean, linear journey from launch to a finished meme — no confusion, no dead ends.</p>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step reveal"><div class="step-num">1</div><div><div class="step-title">Splash Screen</div><div class="step-desc">App opens with a branded splash — first impressions matter.</div></div></div>
+      <div class="flow-step reveal d1"><div class="step-num">2</div><div><div class="step-title">Onboarding Screens</div><div class="step-desc">New users get a guided tour of the app's key features.</div></div></div>
+      <div class="flow-step reveal d2"><div class="step-num">3</div><div><div class="step-title">Dashboard</div><div class="step-desc">Central hub — templates, recent work, and quick tools.</div></div></div>
+      <div class="flow-step reveal d1"><div class="step-num">4</div><div><div class="step-title">Select Template or Upload Image</div><div class="step-desc">Pick a built-in template or bring your own custom image.</div></div></div>
+      <div class="flow-step reveal d2"><div class="step-num">5</div><div><div class="step-title">Add &amp; Customize Text</div><div class="step-desc">Type your meme text and adjust font size, style, and position.</div></div></div>
+      <div class="flow-step reveal d3"><div class="step-num">6</div><div><div class="step-title">Save to Gallery</div><div class="step-desc">Export the finished meme to your device in one tap.</div></div></div>
+      <div class="flow-step reveal d2"><div class="step-num">7</div><div><div class="step-title">Settings</div><div class="step-desc">Manage theme, text size defaults, and other preferences.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SCREENS -->
+<section class="screens-section" id="screens">
+  <div class="section-label reveal">Screens</div>
+  <h2 class="reveal d1">5 polished screens</h2>
+  <p class="section-sub reveal d2">Each screen follows Material Design principles for a native Android feel.</p>
+  <div class="screens-grid reveal d3">
+    <div class="screen-card"><span class="screen-icon">🌟</span><div class="screen-name">Splash Screen</div></div>
+    <div class="screen-card"><span class="screen-icon">📖</span><div class="screen-name">Onboarding</div></div>
+    <div class="screen-card"><span class="screen-icon">🏠</span><div class="screen-name">Dashboard</div></div>
+    <div class="screen-card"><span class="screen-icon">✏️</span><div class="screen-name">Meme Editor</div></div>
+    <div class="screen-card"><span class="screen-icon">⚙️</span><div class="screen-name">Settings</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TECH STACK -->
+<section class="tech-section" id="tech">
+  <div class="section-label reveal">Tech Stack</div>
+  <h2 class="reveal d1">Built with solid<br>Android tech.</h2>
+  <p class="section-sub reveal d2">Lightweight, native, and fast — zero unnecessary dependencies.</p>
+  <div class="tech-pills reveal d3">
+    <div class="tech-pill">🤖 Android Studio</div>
+    <div class="tech-pill">☕ Java</div>
+    <div class="tech-pill">📐 XML Layouts</div>
+    <div class="tech-pill">🖼️ ImageView</div>
+    <div class="tech-pill">🎨 Material Design</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FUTURE -->
+<section class="future-section" id="future">
+  <div class="section-label reveal">Roadmap</div>
+  <h2 class="reveal d1">What's coming next</h2>
+  <p class="section-sub reveal d2">Active development — here's what's planned for future updates.</p>
+  <div class="future-list reveal d3">
+    <div class="future-item"><div class="future-dot"></div>More Meme Templates</div>
+    <div class="future-item"><div class="future-dot"></div>Stickers &amp; Emojis</div>
+    <div class="future-item"><div class="future-dot"></div>Custom Fonts</div>
+    <div class="future-item"><div class="future-dot"></div>Social Media Sharing</div>
+    <div class="future-item"><div class="future-dot"></div>Meme Categories</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-avatar">AS</div>
+    <div>
+      <div class="footer-name">Ammad Saleem</div>
+      <div class="footer-role">Android Developer · Java &amp; XML</div>
+    </div>
+  </div>
+  <div class="footer-right">
+    Built with <strong>Android Studio</strong><br>
+    Language: <strong>Java</strong> · UI: <strong>XML</strong><br>
+    Design: <strong>Material Design</strong>
+  </div>
+</footer>
+
+<script>
+function toggleTheme(){
+  const body=document.body;
+  const btn=document.getElementById('themeBtn');
+  body.classList.toggle('light');
+  const isLight=body.classList.contains('light');
+  btn.textContent=isLight?'☀️':'🌙';
+  localStorage.setItem('theme',isLight?'light':'dark');
+}
+
+// Restore saved theme
+(function(){
+  const saved=localStorage.getItem('theme');
+  if(saved==='light'){
+    document.body.classList.add('light');
+    const btn=document.getElementById('themeBtn');
+    if(btn)btn.textContent='☀️';
+  }
+})();
+
+function toggleMenu(){
+  const h=document.getElementById('hamburger');
+  const m=document.getElementById('mobileMenu');
+  h.classList.toggle('open');
+  m.classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
